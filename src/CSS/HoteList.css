@@ -1,0 +1,55 @@
+.hotelList {
+    /* flex-direction: row;  */
+    box-shadow:0.5rem 0.5rem 1.5rem rgb(179, 179, 179);
+    margin:1rem 0;
+}
+
+/* .card img {
+    width: 30%;
+} */
+
+.hotelFeature{
+    border:0.15rem solid green; 
+    color:green;
+    width:fit-content;
+    /* text-align: center; */
+}
+
+.hotelFeatureContent{
+    padding:0.3rem 0.3rem;
+}
+
+.hotelInfomation{
+    font-size:1.1rem;
+}
+
+.hotelSubInformation{
+    position:relative;
+    /* width:20%; */
+    font-size:1.1rem;
+}
+
+.ranking{
+    text-align: right;
+    margin:0.5rem; 
+    font-size:1.1rem;
+}
+
+.hotelListBtn{
+    position:absolute;
+    bottom:0.5rem;
+    right:0.5rem;
+}
+
+
+@media (max-width: 1200px){
+    .ranking{
+        text-align: left; 
+        margin:auto
+    }
+
+    .hotelListBtn{
+        margin-bottom:1rem;
+        float:right;
+    }
+}

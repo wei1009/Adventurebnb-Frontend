@@ -1,0 +1,14 @@
+.LoginForm{
+    color:black;
+    margin:3rem auto;
+}
+
+.loginFormTitle{
+    text-align: center;
+    color:rgb(58, 57, 57)
+}
+
+.loginFormBtn{
+    margin-top: 0.3rem;
+    float:right;
+}

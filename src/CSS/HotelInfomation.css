@@ -1,0 +1,13 @@
+
+.HotelRoomLists {
+    margin:0 auto ;
+    width:80%;
+    color:black;
+}
+
+.room-list{
+    /* border: 1px solid rgba(126, 126, 125, 0.8); */
+    margin:0.3rem;
+    padding:0.1rem;
+    background-color:rgba(201, 240, 248, 0.603);
+}

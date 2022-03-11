@@ -1,0 +1,14 @@
+.SignupForm{
+    color:black;
+    margin:3rem auto;
+}
+
+.signupFormTitle{
+    text-align: center;
+    color:rgb(58, 57, 57)
+}
+
+.signupFormBtn{
+    margin-top: 0.3rem;
+    float:right;
+}

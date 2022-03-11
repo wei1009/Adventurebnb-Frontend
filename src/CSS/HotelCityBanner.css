@@ -1,0 +1,17 @@
+.city-img{
+    background-repeat:no-repeat ;
+    background-position:center ;
+    background-size: cover;
+    min-width: 100%;   
+    min-height: 25rem;
+    position:relative;
+}
+
+.city-name{
+    background-color: rgba(250, 250, 250, 0.61);
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    margin-bottom:2rem;
+    padding:2rem
+}

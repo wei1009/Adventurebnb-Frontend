@@ -1,0 +1,12 @@
+.profileForm {
+    color:black;
+    margin:3rem auto;
+    box-shadow: 5px 3px 3px rgb(156, 155, 155);
+}
+
+.profile-form-group{
+    margin-bottom:0.3rem;
+}
+.profileFormBtn{
+    float:right;
+}

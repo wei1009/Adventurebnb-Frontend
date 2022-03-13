@@ -26,34 +26,36 @@ function SignupForm({ signup }) {
     });
     const [formErrors, setFormErrors] = useState([]);
 
+console.debug(
+      "SignupForm",
+      "signup=", typeof signup,
+      "formData=", formData,
+      "formErrors=", formErrors,
+  );
+
     /** Handle form submit:
        *
        * Calls login func prop and, if successful, redirect to /companies.
        */
 
-    async function handleSubmit(evt) {
-        evt.preventDefault();
+    async function handleSubmit(e) {
+        e.preventDefault();
         let result = await signup(formData);
         if (result.success) {
-            history.push("/companies");
+            history.push("/");
         } else {
+            console.log(result.errors)
             setFormErrors(result.errors);
         }
     }
 
     /** Update form data field */
-    function handleChange(evt) {
-        const { name, value } = evt.target;
+    function handleChange(e) {
+        const { name, value } = e.target;
         setFormData(data => ({ ...data, [name]: value }));
     }
 
 
-    console.debug(
-        "SignupForm",
-        "signup=", typeof signup,
-        "formData=", formData,
-        "formErrors=", formErrors,
-    );
 
     return (
         <div className="SignupForm">

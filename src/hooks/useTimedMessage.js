@@ -18,11 +18,6 @@ import { useRef, useState, useEffect } from "react";
  *   return (
  *     {myMsgFlag ? <p>Oh No!</p> : null}
  *   )
- *
- * While this hook was written for showing flash messages, it's really just
- * a hook for timed state clearing -- this same pattern could be useful for
- * other tasks.
- *
  */
 
 function useTimedMessage(timeInMsec = 3000) {

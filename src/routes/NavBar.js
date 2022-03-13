@@ -1,50 +1,50 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 import UserContext from "../auth/UserContext";
 import "../CSS/NavBar.css";
 
 
 
 function NavBar({ logout }) {
-    // const { currentUser } = useContext(UserContext);
-    // console.debug("NavBar", "currentUser=", currentUser);
+    const { currentUser } = useContext(UserContext);
+    console.debug("NavBar", "currentUser=", currentUser);
 
-    // function loggedInNav(){
-    //     return(
-    //         <>
+    function loggedInNav(){
+        return(
+            <>
                 
-    //                 <NavLink className="nav-link text-primary" to="/accommodationplan">
-    //                 Accommodation Plan
-    //                 </NavLink>
+                    <NavLink className="nav-link text-primary" to="/accommodationplan">
+                    Accommodation Plan
+                    </NavLink>
                 
                 
-    //                 <NavLink className="nav-link text-primary" to="/profile">
-    //                     profile
-    //                 </NavLink>
+                    <NavLink className="nav-link text-primary" to="/profile">
+                        profile
+                    </NavLink>
                 
               
-    //                 <Link className="nav-link text-primary" to="/" onClick={logout}>
-    //                 Log out {currentUser.first_name || currentUser.username}
-    //                 </Link>
+                    <Link className="nav-link text-primary" to="/" onClick={logout}>
+                    Log out {currentUser.first_name || currentUser.username}
+                    </Link>
                 
-    //             </>
-    //     )
-    // }
+                </>
+        )
+    }
 
-    // function loggedOutNav(){
-    //     return(
-    //         <>
-    //         <NavLink className="nav-link text-primary" to="/login">
-    //         Login
-    //     </NavLink>
-    //     <NavLink className="nav-link text-primary" to="/signup">
-    //         Sign Up
-    //     </NavLink>
+    function loggedOutNav(){
+        return(
+            <>
+            <NavLink className="nav-link text-primary" to="/login">
+            Login
+        </NavLink>
+        <NavLink className="nav-link text-primary" to="/signup">
+            Sign Up
+        </NavLink>
         
-    //     </>
-    //     )
-    // }
+        </>
+        )
+    }
 
 
 
@@ -57,13 +57,13 @@ function NavBar({ logout }) {
                     <Navbar.Collapse id="responsive-navbar-nav">
                       
                         <Nav  className="navItem ms-auto">
-                            {/* {currentUser ? loggedInNav() : loggedOutNav()} */}
-                            <NavLink className="nav-link text-primary" to="/login">
+                            {currentUser ? loggedInNav() : loggedOutNav()}
+                            {/* <NavLink className="nav-link text-primary" to="/login">
                                 Login
                             </NavLink>
                             <NavLink className="nav-link text-primary" to="/signup">
                                 Sign Up
-                            </NavLink>
+                            </NavLink> */}
                         </Nav>   
                     </Navbar.Collapse>
             </Navbar>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import "../CSS/LoginForm.css"
 import Alert from "../common/Alert";
+import "../CSS/LoginForm.css"
 
 /** Login form.
  *
@@ -53,8 +53,6 @@ function LoginForm({ login }) {
     return (
         <div className="LoginForm">
             <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-
-
                 <div className="card">
                     <div className="card-body">
                         <h2 className="mb-3 loginFormTitle">Log In</h2>

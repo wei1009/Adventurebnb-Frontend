@@ -6,6 +6,7 @@ import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../profiles/ProfileForm";
 import Hotels from "../Hotels/Hotels";
 import HotelInfomation from "../Hotels/HotelInfomation";
+import PlanList from "../Plan/PlanList";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // function Routes({ login, signup }) {
@@ -17,6 +18,12 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 // }
 
 function Routes({ login, signup }){
+  console.debug(
+    "Routes",
+    `login=${typeof login}`,
+    `register=${typeof register}`,
+);
+
     return (
        <main>
             <Switch>
@@ -38,15 +45,15 @@ function Routes({ login, signup }){
               </Route>
 
               <Route exact path="/Login">
-                <LoginForm />
+                <LoginForm login={login}/>
               </Route>
 
               <Route exact path="/accommodationplan">
-                <Home />
+                <PlanList />
               </Route>
 
               <Route exact path="/profile">
-                <Home />
+                <ProfileForm />
               </Route>
 
               <Redirect to="/" />

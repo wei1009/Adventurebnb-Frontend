@@ -14,7 +14,7 @@ function NavBar({ logout }) {
         return(
             <>
                 
-                    <NavLink className="nav-link text-primary" to="/accommodationplan">
+                    <NavLink className="nav-link text-primary" to="/myplan">
                     Accommodation Plan
                     </NavLink>
                 

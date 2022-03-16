@@ -63,7 +63,7 @@ function SearchBar() {
     })
 
     //dropdown change than change data
-    const [searchInput, setSearchInput]=useState();
+    const [guestInputVal, setGuestInputVal]=useState();
 
 
      /** Update form data field */
@@ -411,10 +411,10 @@ function SearchBar() {
                 </div>
                 <div className="col-md col-xl guestInput">
 
-                    <input id="searchGuestAdult" name="adult" onChange={handleFormChange} type="number" placeholder="Adult" className="form-control  guest" min="1" max="5" value="1"/>
+                    <input id="searchGuestAdult" name="adult" onChange={handleFormChange} type="number" placeholder="Adult" className="form-control  guest" min="1" max="5"/>
                 </div>
                 <div className="col-md col-xl guestInput">
-                    <input id="searchGuestChildren" name="children" onChange={handleFormChange} type="number" placeholder="Children" className="form-control  guest" min="0" max="5" value="0"/>
+                    <input id="searchGuestChildren" name="children" onChange={handleFormChange} type="number" placeholder="Children" className="form-control  guest" min="0" max="5" />
                 </div>
                 {/* <div className="col-md col-xl formSubmitBtn_container"> */}
                     <button type="submit" className="col-md col-xl-1 btn btn-lg btn-primary formSubmitBtn">Search</button>

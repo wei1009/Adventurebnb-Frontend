@@ -48,7 +48,7 @@ function Routes({ login, signup }){
                 <LoginForm login={login}/>
               </Route>
 
-              <Route exact path="/accommodationplan">
+              <Route exact path="/myplan">
                 <PlanList />
               </Route>
 

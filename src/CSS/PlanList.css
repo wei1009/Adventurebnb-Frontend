@@ -1,6 +1,6 @@
 .plan-page {
     color: #000;
-    margin:3rem;
+    margin:2rem;
 }
 
 .plan-list{
@@ -9,46 +9,100 @@
     margin:0 auto;
 }
 
-.plan-table{
-    width:100%;
-    border: 1px solid;
-    margin:2rem 0;
+.plan-container {
+	box-sizing: border-box;
+    margin:1rem 0;
 }
 
-.table-header{
-    font-size: 1.2rem;
-    background-color:hsl(190, 77%, 88%,0.5);
+.plan-card {
+	background-color: #fff;
+    border:1px solid gray;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	margin: 0 auto;
+	overflow: hidden;
+    width:75%;
+    height:15rem;
 }
 
-.table-header-content-save-date{
-    padding:0.6rem 0;
-    width:9%;
+.plan-title {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
-.table-header-content-date{
-    padding:0.6rem 0;
-    width:13%
+.plan-date {
+	/* border-top: 1px solid gray; */
+	border-bottom: 1px solid gray;
+	padding: 1px 0;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+    margin-bottom:0.5rem;
 }
 
-.table-header-content-name{
-    padding:0.6rem 0;
-    width:25%;
+.plan-address{
+    border-top: 1px solid gray;
+	/* border-bottom: 1px solid gray; */
+	bottom:0;
+    margin:0.5rem 0;
 }
 
-.table-header-content-room{
-    padding:0.6rem 0;
-    width:15%;
-}
-.table-header-content{
-    padding:0.6rem 0;
-    width:8%;
+.plan-hotel-name{
+    color:#2A265F;
+    font-weight: bold;
+    text-shadow: 0.08em 0.08em 0.15em gray;
 }
 
-.table-header-content-sataus{
-    padding:0.6rem 0;
-    width:10%;
+.plan-preview {
+    background-image: url("https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
+	background-size: cover;
+    opacity: 0.85;
+    /* background-color: #2A265F; */
+	color: #fff;
+    font-weight: bold;
+	padding: 30px;
+	width: 40%;
 }
 
-.table-btn{
+.plan-savedate {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	text-decoration: none;
+}
+
+.plan-info {
+	padding: 0.5rem;
+	position: relative;
+	width: 100%;
+	justify-items: center;
+}
+
+.plan-status{
+    padding: 1rem;
+    width: 35%;
+    border-left: 1px dashed #404040;
+    display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+
+
+.plan-btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
     margin:0.5rem;
+	letter-spacing: 1px;
 }

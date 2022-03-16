@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import HotelApi from "../api/api";
 import SearchBar from "../common/SearchBar";
 import HotelRoomCard from "./HotelRoomCard";
 import HotelDetail from "./HotelDetail";
 import LoadingSpinner from "../common/LoadingSpinner";
+
 import '../CSS/HotelInfomation.css';
 
 function HotelInfomation() {
+
   const [hotelData, setHotelData] = useState(null);
   const [mapInfo, setMapInfo] = useState(null);
   const hotel = useLocation().search;
   const hotelCode = new URLSearchParams(hotel).get("hotel_code");
+  const checkInDate = new URLSearchParams(hotel).get("checkInDate");
+  const checkOutDate= new URLSearchParams(hotel).get("checkOutDate");
   const adult = new URLSearchParams(hotel).get("adult");
   const children = new URLSearchParams(hotel).get("children");
 
@@ -26,6 +30,7 @@ useEffect(() => {
     getGoogleMap();
 }, [hotelData]);
 
+//Triggered Hotel Api to get all data
 async function getHotelInfomation(hotelCode, adult, children) {
   let hotelData = await HotelApi.getHotelInfomation(hotelCode, adult, children);
   setHotelData(hotelData);
@@ -33,8 +38,9 @@ async function getHotelInfomation(hotelCode, adult, children) {
   console.log(hotelData.data)
 }
 
+//Triggered google map API
 async function getGoogleMap() {
-  // if (!hotelData)return <LoadingSpinner />
+
 
   if (hotelData !== undefined && hotelData !== null)
   {
@@ -53,15 +59,6 @@ return (
   <div className="HotelInfomation">
     <SearchBar />
     <div className="HotelRoomLists">
-      {/* <HotelDetail  
-                    hotelName={hotelData.name}
-                    image = {hotelData.image}
-                    address= {hotelData.address}
-                    description ={hotelData.description} 
-                    facilities ={hotelData.facilities} 
-                    issue={hotelData.issue}
-                    mapInfo={mapInfo.data}
-                /> */}
       <HotelDetail
         hotelName={hotelData.data.name}
         image={hotelData.data.image}
@@ -77,10 +74,16 @@ return (
             {hotelData.data.room.map((r, index) => (
               <HotelRoomCard
                 key={index}
+                hotelName={hotelData.data.name}
+                hotelCode={hotelData.data.code}
                 maxGuest={r.maxGuest}
                 maxAdult={r.maxAdult}
+                adult={adult}
+                children={children}
                 description={r.description}
                 image={r.roomImages[0].path}
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
               />
             ))}
           </div>

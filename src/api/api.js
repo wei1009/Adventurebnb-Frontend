@@ -79,7 +79,6 @@ static async login(data) {
 }
 
  /** Signup for site. */
-
  static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
     return res.token;   
@@ -90,6 +89,25 @@ static async saveProfile(username, data) {
   let res = await this.request(`users/${username}`, data, "patch");
   return res.user;
 }
+
+ /** Save plan. */
+static async savePlan(username, planData){
+let res = await this.request(`users/${username}`, planData, "post");
+return res.plan
+}
+
+ /** Get user's plan. */
+static async getUserPlan(username) {
+let res =await this.request(`users/${username}/plan`)
+// console.log(res)
+return res
+ }
+
+static async deletePlan(username, planId){
+  let res = await this.request(`users/${username}/${planId}`, "delete");
+  return res;
+}
+
 }
 
 HotelApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +

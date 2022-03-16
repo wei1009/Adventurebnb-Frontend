@@ -1,56 +1,72 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import HotelApi from "../api/api";
 import UserContext from "../auth/UserContext";
+import LoadingSpinner from "../common/LoadingSpinner";
+import { Building } from "react-bootstrap-icons";
 import "../CSS/PlanList.css"
 
 function PlanList() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const [userPlan, setUserPlan] = useState();
+    let titleUsername = currentUser.username.toUpperCase();
+    let username = currentUser.username;
+
+    useEffect(function getUserPlanOnMount() {
+        console.debug("getUserPlanOnMount");
+        getUserPlan(username)
+
+    }, []);
+
+    async function getUserPlan(username) {
+        let userPlan = await HotelApi.getUserPlan(username);
+        setUserPlan(userPlan);
+        console.log(userPlan)
+    }
+
+    const hamdleDeleteClick=(e)=>{
+        let planId = e.target.getAttribute("plan_id");
+        console.log(planId);
+        deletePlan(username, planId);
+    }
+
+    async function deletePlan(username, planId){
+        let plan  = await HotelApi.deletePlan(username, planId);
+    }
+
+    if (!userPlan) { return <LoadingSpinner /> }
+
     return (
         <div className="plan-page">
-            <h2>  User's Accommodation Plan</h2>
             <div className="plan-list" >
-            <table className="plan-table table" >
-                <tr className="table-header table-primary">
-                    <th scope="col" className="table-header-content-save-date">Save Date</th>
-                    <th scope="col" className="table-header-content-date">Check In Date</th>
-                    <th scope="col" className="table-header-content-date">Check Out Date</th>
-                    <th scope="col" className="table-header-content-name">Hotel Name</th>
-                    <th scope="col" className="table-header-content-room">Room Type</th>
-                    <th scope="col" className="table-header-content">Adult</th>
-                    <th scope="col" className="table-header-content">Children</th>
-                    <th scope="col" className="table-header-content-sataus">Staus</th>
-                </tr>
-                <tr>
-                    <td>03-10-2022</td>
-                    <td>03-11-2022</td>
-                    <td>03-12-2022</td>
-                    <td>Hiltom Chicagodffgzfgzf</td>
-                    <td>Double Bed</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td><button className="table-btn btn btn-sm btn-outline-danger">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>03-10-2022</td>
-                    <td>03-11-2022</td>
-                    <td>03-12-2022</td>
-                    <td>Hiltom Chicaggzdgzzfgzf</td>
-                    <td>Double Bed</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td><button className="table-btn btn btn-sm btn-outline-danger">Delete</button></td>
-                </tr>
-                 <tr>
-                    <td>03-10-2022</td>
-                    <td>03-11-2022</td>
-                    <td>03-12-2022</td>
-                    <td>Hiltom Chicagodfzgzfgzf</td>
-                    <td>Double Bed</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td><button className="  table-btn btn btn-sm btn-outline-danger">Delete</button></td>
-                </tr>
-            </table>
+                <h1> {titleUsername}'s Accommodation Plan</h1>
+                {userPlan.map(p => (
+                    <div className="plan-container" key={p.user_plan_id}>
+                        <div className="plan-card">
+                            <div className="plan-preview">
+                                <h6 className="plan-title">Accommodation Plan</h6>
+                                <div className="plan-savedate">Save Date: {p.create_date.split('T')[0]}<i className="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div className="plan-info">
+                                <div className="plan-date">
+                                    <h4>{p.checkin_date.split('T')[0]}</h4>
+                                    <h5>to </h5>
+                                    <h4>{p.checkout_date.split('T')[0]}</h4>
+                                </div>
+                                <h4 className="plan-hotel-name"><Building className="ml-4" /> {p.name}</h4>
+                                <h5> {p.room_description}</h5>
+                                <div>{p.guest_adult} adult(s), {p.guest_children} kid(s)</div>
+                                <div className="plan-address">
+                                    {p.street1},
+                                    <div> {p.city}, {p.state} {p.zip}</div>
+                                </div>
+                            </div>
+                            <div className="plan-status">
+                                <button className="plan-btn">Done</button>
+                                <button className="plan-btn" plan_id={p.user_plan_id} onClick={hamdleDeleteClick}>Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

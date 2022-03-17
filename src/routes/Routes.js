@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
 import Home from "../Home/Home";
 import SignupForm from "../auth/SignupForm";
 import LoginForm from "../auth/LoginForm";
@@ -7,17 +6,22 @@ import ProfileForm from "../profiles/ProfileForm";
 import Hotels from "../Hotels/Hotels";
 import HotelInfomation from "../Hotels/HotelInfomation";
 import PlanList from "../Plan/PlanList";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+import PrivateRoute from "./PrivateRoute";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-// function Routes({ login, signup }) {
-//     console.debug(
-//         "Routes",
-//         `login=${typeof login}`,
-//         `register=${typeof register}`,
-//     );
-// }
 
 function Routes({ login, signup }){
+
+  const options = {
+    position: positions.TOP_CENTER,
+    timeout: 3000,
+    offset: '25px',
+    transition: transitions.SCALE
+  }
+  
+
   console.debug(
     "Routes",
     `login=${typeof login}`,
@@ -48,13 +52,15 @@ function Routes({ login, signup }){
                 <LoginForm login={login}/>
               </Route>
 
-              <Route exact path="/myplan">
+              <PrivateRoute exact path="/myplan">
+              <AlertProvider template={AlertTemplate} {...options}>
                 <PlanList />
-              </Route>
+                </AlertProvider>
+              </PrivateRoute>
 
-              <Route exact path="/profile">
+              <PrivateRoute exact path="/profile">
                 <ProfileForm />
-              </Route>
+              </PrivateRoute>
 
               <Redirect to="/" />
 

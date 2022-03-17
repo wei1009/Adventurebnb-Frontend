@@ -4,15 +4,11 @@
 
 .searchBar{
     width:90%;
-    /* padding:100em auto; */
-    /* background-color: transparent; */
-    
 }
 
 .searchForm {
   justify-content: center;
   align-items: center;  
-  
 }
 
 .searchInput{
@@ -37,32 +33,24 @@
   overflow:auto;
 }
 
-
 .searchHotelList{
   padding:0.7rem;
 }
-
 
 .searchHotelsDropdownItem :hover{
   background-color: rgba(150, 250, 225);
   color:gray;
   font-weight:bold;
-
 }
 
-
 @media (max-width: 768px){
-
-
   .date-picker{
     margin-top:-1.4rem !important;
-    /* height: 56px !important; */
-    
   }
  
   .guestInput {
   margin:0.5rem ; 
-}
+  }
 
   .formSubmitBtn{
    margin:0 0 2rem 0;
@@ -73,11 +61,6 @@
   background-color: transparent !important;
 }
 
-/* .guestInput {
-  padding:0;
-  margin:0.5rem ; 
-} */
-
 .guest{
   width:100%;
   height: 54px;
@@ -87,9 +70,7 @@
   .guestInput {
     margin:0 0 2rem 0; 
   }
-
   .formSubmitBtn{
     margin:0 0 2rem 0; 
    } 
-
 }

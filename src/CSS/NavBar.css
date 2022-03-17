@@ -1,8 +1,6 @@
 .NavBar {
     background-color: white;
     border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-    /* padding:2rem; */
-   
   }
 
   .logo {
@@ -11,11 +9,8 @@
   
   .nav-link.active {
     font-weight: bold;
-    
   }
 
   .navItem {
     padding:0 1rem;
-
-    
   }

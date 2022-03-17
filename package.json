@@ -13,6 +13,8 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "react": "^16.14.0",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
     "react-bootstrap": "^2.1.2",
     "react-bootstrap-icons": "^1.7.2",
     "react-date-range": "^1.4.0",

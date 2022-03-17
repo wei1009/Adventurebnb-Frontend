@@ -55,8 +55,7 @@ function ProfileForm() {
     let profileData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
-      email: formData.email,
-      password: formData.password,
+      email: formData.email
     };
 
     let username = formData.username;
@@ -65,12 +64,11 @@ function ProfileForm() {
     try {
       updatedUser = await HotelApi.saveProfile(username, profileData);
     } catch (errors) {
-      debugger;
       setFormErrors(errors);
       return;
     }
 
-    setFormData(f => ({ ...f, password: "" }));
+    setFormData(f => ({ ...f}));
     setFormErrors([]);
     setSaveConfirmed(true);
 
@@ -121,7 +119,7 @@ function ProfileForm() {
                     onChange={handleChange}
                 />
               </div>
-              <div className="form-group profile-form-group">
+              {/* <div className="form-group profile-form-group">
                 <label>Confirm password to make changes:</label>
                 <input
                     type="password"
@@ -130,7 +128,7 @@ function ProfileForm() {
                     value={formData.password}
                     onChange={handleChange}
                 />
-              </div>
+              </div> */}
 
               {formErrors.length
                   ? <Alert type="danger" messages={formErrors} />

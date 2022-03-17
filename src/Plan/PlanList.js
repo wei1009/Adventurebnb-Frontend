@@ -3,18 +3,20 @@ import HotelApi from "../api/api";
 import UserContext from "../auth/UserContext";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { Building } from "react-bootstrap-icons";
+import { useAlert } from 'react-alert'
 import "../CSS/PlanList.css"
 
 function PlanList() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [userPlan, setUserPlan] = useState();
+    const [userPlan, setUserPlan] = useState([]);
+    const alert = useAlert();
     let titleUsername = currentUser.username.toUpperCase();
     let username = currentUser.username;
+
 
     useEffect(function getUserPlanOnMount() {
         console.debug("getUserPlanOnMount");
         getUserPlan(username)
-
     }, []);
 
     async function getUserPlan(username) {
@@ -23,14 +25,49 @@ function PlanList() {
         console.log(userPlan)
     }
 
-    const hamdleDeleteClick=(e)=>{
+    const handleDeleteClick = (e) => {
         let planId = e.target.getAttribute("plan_id");
         console.log(planId);
+        console.log(username);
         deletePlan(username, planId);
+        getUserPlan(username);
     }
 
-    async function deletePlan(username, planId){
-        let plan  = await HotelApi.deletePlan(username, planId);
+    const handlePlanCompleteClick = (e) => {
+        let planId = e.target.getAttribute("plan_id");
+        let planStatus = { status: "completed" };
+        planStatusChange(username, planId, planStatus);
+        getUserPlan(username);
+    }
+
+    const handlePlanUncompleteClick = (e) => {
+        let planId = e.target.getAttribute("plan_id");
+        let planStatus = { status: "pending" };
+        planStatusChange(username, planId, planStatus);
+        getUserPlan(username);
+    }
+
+    async function deletePlan(username, planId) {
+        try {
+            let plan = await HotelApi.deletePlan(username, planId);
+            alert.show("The plan has been deleted.");
+        }
+        catch (e) {
+            console.log(e);
+            alert.show("Delete Plan Error: \n" + e[0]);
+        }
+    }
+
+    async function planStatusChange(username, planId, planStatus) {
+        // try{
+        //     let plan  = await HotelApi.planStatusChange(username, planId, planStatus);
+        //     alert.show("The plan has been deleted.");
+        // }
+        // catch(e){
+        //     console.log(e);
+        //     alert.show("Delete Plan Error: \n" + e[0]);
+        // }
+        let plan = await HotelApi.planStatusChange(username, planId, planStatus);
     }
 
     if (!userPlan) { return <LoadingSpinner /> }
@@ -61,8 +98,15 @@ function PlanList() {
                                 </div>
                             </div>
                             <div className="plan-status">
-                                <button className="plan-btn">Done</button>
-                                <button className="plan-btn" plan_id={p.user_plan_id} onClick={hamdleDeleteClick}>Delete</button>
+                                {p.status == "pending" ? (<button className="plan-btn" plan_id={p.user_plan_id} onClick={handlePlanCompleteClick}>Completed</button>)
+                                    : null
+
+                                }
+                                {p.status == "completed" ? (<button className="plan-btn" plan_id={p.user_plan_id} onClick={handlePlanUncompleteClick}>uncompleted</button>)
+                                    : null
+
+                                }
+                                <button className="plan-btn" plan_id={p.user_plan_id} onClick={handleDeleteClick}>Delete</button>
                             </div>
                         </div>
                     </div>

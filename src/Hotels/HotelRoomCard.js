@@ -25,7 +25,7 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
                     description: description,
                     checkInDate: checkInDate,
                     checkOutDate: checkOutDate,
-                    status:"confirmed"
+                    status:"pending"
                 }
                 saveAllPlan(username, planData)
             } catch(errors) {

@@ -5,8 +5,8 @@ import SearchCitiesDropdownList from "./SearchCitiesDropdownList";
 import SearchHotelsDropdownList from "./SearchHotelsDropdownList";
 import { RangeDatePicker } from 'react-google-flight-datepicker';
 import 'react-google-flight-datepicker/dist/main.css';
-import DatePicker from "react-datepicker";
-import moment from "moment";
+// import DatePicker from "react-datepicker";
+// import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "../CSS/SearchBar.css"
 import { NutFill } from "react-bootstrap-icons";

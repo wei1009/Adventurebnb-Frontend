@@ -34,7 +34,6 @@
 }
 
 .plan-date {
-	/* border-top: 1px solid gray; */
 	border-bottom: 1px solid gray;
 	padding: 1px 0;
 	font-weight: 700;
@@ -46,7 +45,6 @@
 
 .plan-address{
     border-top: 1px solid gray;
-	/* border-bottom: 1px solid gray; */
 	bottom:0;
     margin:0.5rem 0;
 }
@@ -61,7 +59,6 @@
     background-image: url("https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
 	background-size: cover;
     opacity: 0.85;
-    /* background-color: #2A265F; */
 	color: #fff;
     font-weight: bold;
 	padding: 30px;
@@ -92,8 +89,6 @@
 	justify-content: flex-end;
 	align-items: center;
 }
-
-
 
 .plan-btn {
 	background-color: #2A265F;

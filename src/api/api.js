@@ -45,68 +45,74 @@ class HotelApi {
 
   static async getHotelInfomation(hotelCode, adult, children) {
     console.log(hotelCode, adult, children)
-    let res = await axios.get(`${BASE_URL}/hotel`,{ params:{hotelCode:`${hotelCode}`,adult:`${adult}`,children:`${children}`}})
+    let res = await axios.get(`${BASE_URL}/hotel`, { params: { hotelCode: `${hotelCode}`, adult: `${adult}`, children: `${children}` } })
     console.log(res)
     return res
   }
 
   static async getGoogleMap(coordinates) {
     console.log(coordinates)
-    let res = await axios.get(`${BASE_URL}/hotel/google`,{params:{lat:`${coordinates.lat}`,lng:`${coordinates.lng}`}})
+    let res = await axios.get(`${BASE_URL}/hotel/google`, { params: { lat: `${coordinates.lat}`, lng: `${coordinates.lng}` } })
     console.log(res)
     return res
   }
 
-  static async getCityHotelInfomation(cityCode, stateCode, adult, children){
+  static async getCityHotelInfomation(cityCode, stateCode, adult, children) {
     console.log(cityCode, stateCode, adult, children)
-    let res = await axios.get(`${BASE_URL}/city`,{ params:{cityCode:`${cityCode}`, stateCode:`${stateCode}`, adult:`${adult}`,children:`${children}`}})
+    let res = await axios.get(`${BASE_URL}/city`, { params: { cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}` } })
     console.log(res)
     return res
-}
+  }
 
- /** Get the current user. */
+  /** Get the current user. */
 
- static async getCurrentUser(username) {
-  let res = await this.request(`users/${username}`);
-  return res.user;
-}
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 
-/** Get token for login from username, password. */
+  /** Get token for login from username, password. */
 
-static async login(data) {
-  let res = await this.request(`auth/token`, data, "post");
-  return res.token;
-}
+  static async login(data) {
+    let res = await this.request(`auth/token`, data, "post");
+    return res.token;
+  }
 
- /** Signup for site. */
- static async signup(data) {
+  /** Signup for site. */
+  static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    return res.token;   
-}
+    return res.token;
+  }
 
- /** Save user profile page. */
-static async saveProfile(username, data) {
-  let res = await this.request(`users/${username}`, data, "patch");
-  return res.user;
-}
+  /** Save user profile page. */
+  static async saveProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
 
- /** Save plan. */
-static async savePlan(username, planData){
-let res = await this.request(`users/${username}`, planData, "post");
-return res.plan
-}
+  /** Save plan. */
+  static async savePlan(username, planData) {
+    let res = await this.request(`users/${username}`, planData, "post");
+    return res.plan
+  }
 
- /** Get user's plan. */
-static async getUserPlan(username) {
-let res =await this.request(`users/${username}/plan`)
-// console.log(res)
-return res
- }
+  /** Get user's plan. */
+  static async getUserPlan(username) {
+    let res = await this.request(`plan/${username}`)
+    // console.log(res)
+    return res
+  }
 
-static async deletePlan(username, planId){
-  let res = await this.request(`users/${username}/${planId}`, "delete");
-  return res;
-}
+  /** Delete user's plan. */
+  static async deletePlan(username, planId) {
+    let res = await this.request(`plan/${username}/${planId}`, {}, "delete");
+    return res;
+  }
+
+  static async planStatusChange(username, planId, planStatus) {
+    let res = await this.request(`plan/${username}/${planId}`, planStatus, "patch");
+    return res;
+  }
 
 }
 

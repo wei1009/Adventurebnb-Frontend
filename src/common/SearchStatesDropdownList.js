@@ -1,11 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function SearchStatesDropdownList ({ state }) {
     console.debug("SearchStatesDropdownList ", state);
 
     return (
-        // <Link className="CompanyCard card" to={`/companies/${handle}`}>
         <li className="searchHotelsDropdownItem" type="state" state_code={state}>
             <div>
                 <span className="searchStateDropdown">{state}</span>
@@ -16,9 +14,6 @@ function SearchStatesDropdownList ({ state }) {
                 </div>
             </div>
         </li>
-
-
-        // </Link>
     )
 
 }

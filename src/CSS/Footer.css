@@ -1,0 +1,24 @@
+.footer{
+    margin-top:2rem;
+    background-color:hsl(190, 77%, 88%,0.8);
+    min-height: 10rem;
+}
+
+.footer-content{
+    padding:2rem;
+    text-align: center;
+    width:60%;
+    margin:0 auto;
+}
+
+.footer-Info{
+    border-bottom: 1px solid gray;
+    padding:0.5rem
+}
+
+.social-icon{
+    font-size:2rem;
+    margin:1rem;
+    text-decoration: none;
+    color:black
+}

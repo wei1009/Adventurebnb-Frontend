@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HotelApi from "../api/api";
-import SearchStatesDropdownList from "./SearchStatesDropdownList";
+import SearchZipsDropdownList from "./SearchZipsDropdownList";
 import SearchCitiesDropdownList from "./SearchCitiesDropdownList";
 import SearchHotelsDropdownList from "./SearchHotelsDropdownList";
 import { RangeDatePicker } from 'react-google-flight-datepicker';
@@ -39,17 +40,22 @@ function SearchBar() {
     const [hotels, setHotels] = useState(null);
     const [cities, setCities] = useState(null);
     const [states, setStates] = useState(null);
+    const [zips, setZips] = useState(null);
     const [isFocus, setisFocus] = useState(false);
     const [checkInDate, setCheckInDate] = useState(new Date());
     const [checkOutDate, setCheckOutDate] = useState(new Date());
+
+    const [adultCount, setAdultCount] = useState(null);
+    const [childCount, setChildCount] = useState(null);
 
     const [formSearchType, setSearchType] = useState(null);
     const [formCityCode, setCityCode] = useState(null);
     const [formStateCode, setStateCode] = useState(null);
     const [formHotelCode, setHotelCode] = useState(null);
+    const [formZipCode, setZipCode] = useState(null);
     const [formAction, setFormAction] = useState("/");
 
-    const [filteredStates, setFilteredStates] = useState([]);
+    const [filteredZips, setFilteredZips] = useState([]);
     const [filteredCities, setFilteredCities] = useState([]);
     const [filteredHotels, setFilteredHotels] = useState([]);
     const [formData, setFormData] = useState({
@@ -59,12 +65,14 @@ function SearchBar() {
         children:"",
         hotel_code:"",
         city_code:"",
-        state_code:""
+        state_code:"",
+        zip_code:""
     })
 
     //dropdown change than change data
     const [guestInputVal, setGuestInputVal]=useState();
 
+    const qs = new URLSearchParams(useLocation().search);   //Get Query String
 
      /** Update form data field */
     function handleFormChange(evt) {
@@ -98,12 +106,44 @@ function SearchBar() {
         console.debug("HotelList useEffect getHotelOnMount");
         searchHotel();
         searchCity();
-        searchState();
+        searchZip();
 
- 
-        setCheckInDate(checkInDate.toISOString().split('T')[0]);
-        setCheckOutDate(getDefaultCheckOutDate(checkInDate).toISOString().split('T')[0]);
-        //filerSearchHotelsDropdown();
+        //Initialize adult Count from query string
+        const queryAdult = qs.get("adult");
+        if (queryAdult !== null && queryAdult !== undefined){
+            setAdultCount(queryAdult)
+        }
+        else{
+            setAdultCount(2);
+        }
+
+        //Initialize children Count from query string
+        const querychildren = qs.get("children");
+        if (querychildren !== null && querychildren !== undefined){
+            setChildCount(querychildren)
+        }
+        else{
+            setChildCount(0);
+        }
+
+        //Initialize check-in date Count from query string
+        const queryCheckInDate = qs.get("checkInDate");
+        if (queryCheckInDate !== null && queryCheckInDate !== undefined){
+            setCheckInDate(queryCheckInDate)
+        }
+        else{
+            let today = new Date();
+            setCheckInDate(today.toISOString().split('T')[0]);
+        }
+
+        //Initialize check-out date Count from query string
+        const queryCheckOutDate = qs.get("checkOutDate");
+        if (queryCheckOutDate !== null && queryCheckOutDate !== undefined && queryCheckOutDate > queryCheckInDate){
+            setCheckOutDate(queryCheckOutDate)
+        }
+        else{
+            setCheckOutDate(getDefaultCheckOutDate(checkInDate).toISOString().split('T')[0])
+        }
 
     }, []);
 
@@ -120,14 +160,15 @@ function SearchBar() {
     }, [searchTerm]);
 
     useEffect(() => {
-        // console.log(checkInDate);
-    }, [checkInDate]);
+        ////Initialize search textbox from query string
+        initSearchTextBoxByQueryString();
+    }, [hotels]);
 
     useEffect(() => {
-        if (formSearchType === "city"){
-            setFormAction("/city");
+        if (formSearchType == "city" || formSearchType == "zip"){
+            setFormAction("/hotelsearch");
         }
-        else if (formSearchType === "hotel"){
+        else if (formSearchType == "hotel"){
             setFormAction("/hotel");
         }
         else {
@@ -137,25 +178,19 @@ function SearchBar() {
 
 
     async function searchHotel() {
-        let hotels = await HotelApi.getHotel();
+        let hotels = await HotelApi.getHotels();
         setHotels(hotels);
         // console.log(hotels.data)
     }
     async function searchCity() {
-        let cities = await HotelApi.getHotelByCity();
+        let cities = await HotelApi.getCities();
         setCities(cities);
         // console.log(cities.data)
     }
-    async function searchState() {
-        let states = await HotelApi.getHotelByState();
-        setStates(states);
-        // console.log(states.data)
+    async function searchZip() {
+        let zips = await HotelApi.getZips();
+        setZips(zips);
     }
-
-    // async function handleFormSubmit(e){
-    //     let result = await HotelApi.Search(formData)    
-    // }
-
 
     function handleFormSubmit(e){
 
@@ -167,13 +202,63 @@ function SearchBar() {
         if (!e.currentTarget.contains(e.relatedTarget)) {
             setisFocus(false);
         }
-        console.log(isFocus)
+    }
+
+    //Innitalize search textbox on search bar and related states
+    function initSearchTextBoxByQueryString(){
+            //Initial Search Textbox
+            const querySearchType = qs.get("type");
+            const queryCityCode = qs.get("city_code");
+            const queryStateCode = qs.get("state_code");
+            const queryHotelCode = qs.get("hotel_code");
+            const queryZipCode = qs.get("zip_code");
+            let searchHotelTextbox = document.getElementById("searchHotelTextbox")
+    
+            if(querySearchType == "city" && queryCityCode !== null && queryCityCode !== undefined
+                && queryStateCode !== null && queryStateCode !== undefined){
+                setSearchType(querySearchType);
+                setHotelCode(null); 
+                setCityCode(queryCityCode);
+                setStateCode(queryStateCode);
+                setZipCode(null);
+                searchHotelTextbox.value = queryCityCode + ", " + queryStateCode
+            }
+            else if(querySearchType == "hotel" && queryHotelCode !== null && queryHotelCode !== undefined
+                && hotels !== null && hotels !== undefined    
+                && Array.isArray(hotels.data)){
+    
+                let defaultHotel;
+                
+                for (let h of hotels.data) {
+                    if (h.code == queryHotelCode){
+                        defaultHotel =  h
+                        break;
+                    }
+                }
+    
+                if (defaultHotel !== null && defaultHotel !== undefined){
+                    setSearchType(querySearchType);
+                    setHotelCode(queryHotelCode); 
+                    setCityCode(null);
+                    setStateCode(null);
+                    setZipCode(null);
+                    searchHotelTextbox.value = defaultHotel.name
+                }
+            }    
     }
 
     /** Update form fields */
     function handleSearchFieldChange(e) {
         setSearchTerm(e.target.value);
         //filerSearchHotelsDropdown(); 
+    }
+
+    function handleAdultChange(e) {
+        setAdultCount(e.target.value);
+    }
+
+    function handleChildChange(e) {
+        setChildCount(e.target.value);
     }
 
     function getDefaultCheckOutDate(checkInDate){
@@ -186,11 +271,11 @@ function SearchBar() {
 
     function filerSearchHotelsDropdown() {
 
-        setFilteredStates([]);
+        setFilteredZips([]);
         setFilteredCities([]);
         setFilteredHotels([]);
 
-        if (states == null || states == undefined || cities == null || cities == undefined || hotels == null || hotels == undefined) {
+        if (zips == null || zips == undefined || cities == null || cities == undefined || hotels == null || hotels == undefined) {
             return;
         }
 
@@ -198,44 +283,23 @@ function SearchBar() {
         searchTxt = searchTerm.trim().toLocaleLowerCase();
 
 
-        let tempStates = [];
+        let tempZips = [];
         let tempCities = [];
         let tempHotels = [];
 
         if (searchTxt == "") {
-            //Only display top 10 states
+            //Only display top 10 cities
 
             for (let i = 0; i < 10; i++) {
-                tempStates.push(states.data[i]);
+                tempCities.push(cities.data[i]);
             }
-            setFilteredStates(tempStates);
+            setFilteredCities(tempCities);
         }
         else {
             let searchWords = [];
             searchWords = searchTxt.split(" ");
 
             let matchCount = 0;
-
-            //Display states if match
-            for (let state of states.data) {
-                let isMatch = searchWords.every(function (e) {
-                    let findSate = state.state.toLowerCase().indexOf(e);
-
-                    return (
-                        findSate >= 0
-                    );
-                });
-                if (isMatch) {
-                    matchCount++;
-                    tempStates.push(state);
-                }
-
-                if (matchCount >= 10) break;
-            }
-
-            if (tempStates.length > 0) setFilteredStates(tempStates);
-            if (matchCount >= 10) return;
-
 
             //Display City if match
             for (let i = 0; i < cities.data.length; i++) {
@@ -260,6 +324,26 @@ function SearchBar() {
             }
 
             if (tempCities.length > 0) setFilteredCities(tempCities);
+            if (matchCount >= 10) return;
+
+
+            //Display zips if match
+            for (let zip of zips.data) {
+                let isMatch = searchWords.every(function (e) {
+                    let findZip = zip.zip.toLowerCase().indexOf(e);
+                    return (
+                        findZip >= 0
+                    );
+                });
+                if (isMatch) {
+                    matchCount++;
+                    tempZips.push(zip);
+                }
+
+                if (matchCount >= 10) break;
+            }
+
+            if (tempZips.length > 0) setFilteredZips(tempZips);
             if (matchCount >= 10) return;
 
             //Display hotel if match
@@ -303,6 +387,7 @@ function SearchBar() {
             setHotelCode(e.currentTarget.getAttribute("hotel_code")); 
             setCityCode(null);
             setStateCode(null);
+            setZipCode(null);
             searchHotelTextbox.value = e.currentTarget.querySelector(".searchHotelDropdown").innerHTML;
         }
         else if (e.currentTarget.type === "city"){
@@ -310,13 +395,23 @@ function SearchBar() {
             setHotelCode(null); 
             setCityCode(e.currentTarget.getAttribute("city_code"));
             setStateCode(e.currentTarget.getAttribute("state_code"));
+            setZipCode(null);
             searchHotelTextbox.value = e.currentTarget.querySelector(".searchCityDropdown").innerHTML;
+        }
+        else if (e.currentTarget.type === "zip"){
+            setSearchType(e.currentTarget.type);
+            setHotelCode(null); 
+            setCityCode(null);
+            setStateCode(null);
+            setZipCode(e.currentTarget.getAttribute("zip_code"));
+            searchHotelTextbox.value = e.currentTarget.querySelector(".searchZipDropdown").innerHTML;
         }
         else{
             setSearchType(null);
             setHotelCode(null); 
             setCityCode(null);
-            setStateCode(null);
+            setZipCode(null);
+            setZipCode(null);
             searchHotelTextbox.value = "";            
         }
 
@@ -338,28 +433,30 @@ function SearchBar() {
                         onFocus={handleClick}
                         onChange={handleFormChange, handleSearchFieldChange}
                         // onKeyUp={handleSearchFieldChange}
-                        //onBlur={handleBlur}
+                        onBlur={handleBlur}
                     />
                     {isFocus && (
                         <div id="searchHotelsDropdown">
                             <ul className="searchHotelList"> 
-                                {filteredStates.map(state => (
-                                    <SearchStatesDropdownList
-                                        key={state.state}
-                                        state={state.state} />
-                                ))}
                                 {filteredCities.map((city, index) => (
                                     <SearchCitiesDropdownList
-                                        onClickEvent={searchDropDownClick}
+                                        onMouseDownEvent={searchDropDownClick}
                                         key={index}
                                         index={index}
                                         city={city.city}
                                         state={city.state}
                                     />
                                 ))}
+                               {filteredZips.map((zip, index) => (
+                                    <SearchZipsDropdownList
+                                        onMouseDownEvent={searchDropDownClick}
+                                        key={index}
+                                        zip={zip.zip}
+                                        state={zip.state} />
+                                ))}
                                 {filteredHotels.map(hotel => (
                                     <SearchHotelsDropdownList
-                                        onClickEvent={searchDropDownClick}
+                                        onMouseDownEvent={searchDropDownClick}
                                         key={hotel.code}
                                         code={hotel.code}
                                         name={hotel.name}
@@ -390,6 +487,12 @@ function SearchBar() {
                         <input id="searchStateCode" name="state_code" type="textbox"  style={{display:"none"}} value={formStateCode} onChange={handleFormChange} />
                         </>)
                     }
+                    {formSearchType=="zip" &&
+                        (<>
+                        <input id="searchType" name="type" type="textbox"  style={{display:"none"}} value={formSearchType} onChange={handleFormChange} />
+                        <input id="searchZipCode" name="zip_code" type="textbox"  style={{display:"none"}} value={formZipCode} onChange={handleFormChange} />
+                        </>)
+                    }
                 </div>
                 <div className="col-md-6 col-xl-4">
                     <RangeDatePicker
@@ -410,11 +513,10 @@ function SearchBar() {
                     <input id="searchCheckOutDate" type="textbox"  style={{display:"none"}} name="checkOutDate" value={checkOutDate} onChange={handleFormChange}/>
                 </div>
                 <div className="col-md col-xl guestInput">
-
-                    <input id="searchGuestAdult" name="adult" onChange={handleFormChange} type="number" placeholder="Adult" className="form-control  guest" min="1" max="5"/>
+                    <input id="searchGuestAdult" name="adult" onChange={handleFormChange, handleAdultChange} type="number" placeholder="Adult" className="form-control  guest" min="1" max="5" value={adultCount}/>
                 </div>
                 <div className="col-md col-xl guestInput">
-                    <input id="searchGuestChildren" name="children" onChange={handleFormChange} type="number" placeholder="Children" className="form-control  guest" min="0" max="5" />
+                    <input id="searchGuestChildren" name="children" onChange={handleFormChange, handleChildChange} type="number" placeholder="Children" className="form-control  guest" min="0" max="5" value={childCount} />
                 </div>
                 {/* <div className="col-md col-xl formSubmitBtn_container"> */}
                     <button type="submit" className="col-md col-xl-1 btn btn-lg btn-primary formSubmitBtn">Search</button>

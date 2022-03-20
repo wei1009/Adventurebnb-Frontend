@@ -17,7 +17,7 @@ function TravelInfo() {
                     <div className="city-layout column">
 
                         <Link className="city-destination row " 
-                        to={`/city?type=city&city_code=NEW+YORK&state_code=NY&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`/hotelsearch?type=city&city_code=NEW+YORK&state_code=NY&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)` }}>
 
@@ -25,35 +25,35 @@ function TravelInfo() {
                             <span>New York (NY)</span>
                         </Link>
                         <Link className="city-destination row "
-                        to={`city?type=city&city_code=LAS+VEGAS&state_code=NV&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`hotelsearch?type=city&city_code=LAS+VEGAS&state_code=NV&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1470076892663-af684e5e15af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1016&q=80)` }}>
                             </img>
                             <span>Las Vegas (NV)</span>
                         </Link>
                         <Link className="city-destination row "
-                        to={`city?type=city&city_code=LOS+ANGELES&state_code=CA&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`hotelsearch?type=city&city_code=LOS+ANGELES&state_code=CA&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1572975165675-ab322e4b55ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)` }}>
                             </img>
                             <span>Los Angeles (CA)</span>
                         </Link>
                         <Link className="city-destination row "
-                        to={`city?type=city&city_code=ORLANDO&state_code=FL&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`hotelsearch?type=city&city_code=ORLANDO&state_code=FL&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1575089776834-8be34696ffb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80)` }}>
                             </img>
                             <span>Orlando (FL)</span>
                         </Link>
                         <Link className="city-destination row "
-                        to={`city?type=city&city_code=DALLAS&state_code=TX&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`hotelsearch?type=city&city_code=DALLAS&state_code=TX&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1563219125-60d10ffe8877?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80)` }}>
                             </img>
                             <span>Dallas (TX)</span>
                         </Link>
                         <Link className="city-destination row "
-                        to={`city?type=city&city_code=PHOENIX&state_code=AZ&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
+                        to={`hotelsearch?type=city&city_code=PHOENIX&state_code=AZ&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=2&children=0`}>
                             <img className="city-destination-image"
                                 style={{ backgroundImage: `url(https://images.unsplash.com/photo-1589046207215-b5ee3097bafc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)` }}>
                             </img>

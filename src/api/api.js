@@ -25,20 +25,20 @@ class HotelApi {
   }
 
   /** Get all hotels */
-  static async getHotel() {
+  static async getHotels() {
     let res = await axios.get(`${BASE_URL}/hoteldata`)
     // console.log(res)
     return res
   }
 
-  static async getHotelByCity() {
+  static async getCities() {
     let res = await axios.get(`${BASE_URL}/hotelcitydata`)
     // console.log(res)
     return res
   }
 
-  static async getHotelByState() {
-    let res = await axios.get(`${BASE_URL}/hotelstatedata`)
+  static async getZips() {
+    let res = await axios.get(`${BASE_URL}/hotelzipdata`)
     // console.log(res)
     return res
   }
@@ -57,10 +57,13 @@ class HotelApi {
     return res
   }
 
-  static async getCityHotelInfomation(cityCode, stateCode, adult, children) {
-    console.log(cityCode, stateCode, adult, children)
-    let res = await axios.get(`${BASE_URL}/city`, { params: { cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}` } })
-    console.log(res)
+  static async getHotelsByCity(cityCode, stateCode, adult, children) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"city", cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}` } })
+    return res
+  }
+
+  static async getHotelsByZip(zipCode, adult, children) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"zip", zipCode: `${zipCode}`, adult: `${adult}`, children: `${children}` } })
     return res
   }
 

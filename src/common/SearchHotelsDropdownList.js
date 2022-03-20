@@ -1,10 +1,10 @@
 import React from "react";
 
-function SearchHotelsDropdownList({ code, name, city,state, onClickEvent}) {
+function SearchHotelsDropdownList({ code, name, city,state, onMouseDownEvent}) {
     console.debug("SearchHotelsDropdownList", name);
 
     return (
-        <li className="searchHotelsDropdownItem" type="hotel" hotel_code={code} onClick={onClickEvent}>
+        <li className="searchHotelsDropdownItem" type="hotel" hotel_code={code} onMouseDown={onMouseDownEvent}>
             <div>
                 <span className="searchHotelDropdown">{name}</span>
                 <div>

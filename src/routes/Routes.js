@@ -40,8 +40,10 @@ function Routes({ login, signup }){
                 <HotelInfomation />
               </Route>
 
-              <Route exact path="/city">
-                <Hotels />
+              <Route exact path="/hotelsearch">
+                <AlertProvider template={AlertTemplate} {...options}>
+                  <Hotels />
+                </AlertProvider>
               </Route>
 
               <Route exact path="/signup">

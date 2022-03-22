@@ -57,13 +57,13 @@ class HotelApi {
     return res
   }
 
-  static async getHotelsByCity(cityCode, stateCode, adult, children) {
-    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"city", cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}` } })
+  static async getHotelsByCity(cityCode, stateCode, adult, children,page) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"city", cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}`,page:`${page}` } })
     return res
   }
 
-  static async getHotelsByZip(zipCode, adult, children) {
-    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"zip", zipCode: `${zipCode}`, adult: `${adult}`, children: `${children}` } })
+  static async getHotelsByZip(zipCode, adult, children,page) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"zip", zipCode: `${zipCode}`, adult: `${adult}`, children: `${children}`,page:`${page}` } })
     return res
   }
 

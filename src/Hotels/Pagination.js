@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import '../CSS/Pagination.css';
 
-
 function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, adult, children }) {
     const history = useHistory();
     const locationSearch = useLocation().search;
@@ -46,7 +45,6 @@ function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, 
     }
 
     return (
-
         <nav aria-label="Page navigation example" >
             <ul className="pagination">
                 <li className="page-item" onClick={handlePreviousPageClick}>
@@ -68,7 +66,6 @@ function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, 
                 </li>
             </ul>
         </nav>
-
     )
 }
 

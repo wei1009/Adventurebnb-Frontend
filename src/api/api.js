@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
-//const BASE_URL =  "http://localhost:3001";
 
 class HotelApi {
   static token;
@@ -27,55 +26,51 @@ class HotelApi {
   /** Get all hotels */
   static async getHotels() {
     let res = await axios.get(`${BASE_URL}/hoteldata`)
-    // console.log(res)
     return res
   }
 
+  /** Get all cities data*/
   static async getCities() {
     let res = await axios.get(`${BASE_URL}/hotelcitydata`)
-    // console.log(res)
     return res
   }
 
+  /** Get all zip code data*/
   static async getZips() {
     let res = await axios.get(`${BASE_URL}/hotelzipdata`)
-    // console.log(res)
     return res
   }
 
+  /** Get hotel infomation detail*/
   static async getHotelInfomation(hotelCode, adult, children) {
-    console.log(hotelCode, adult, children)
     let res = await axios.get(`${BASE_URL}/hotel`, { params: { hotelCode: `${hotelCode}`, adult: `${adult}`, children: `${children}` } })
-    console.log(res)
     return res
   }
 
+  /** Triggered google api*/
   static async getGoogleMap(coordinates) {
-    console.log(coordinates)
     let res = await axios.get(`${BASE_URL}/hotel/google`, { params: { lat: `${coordinates.lat}`, lng: `${coordinates.lng}` } })
-    console.log(res)
     return res
   }
 
-  static async getHotelsByCity(cityCode, stateCode, adult, children,page) {
-    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"city", cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}`,page:`${page}` } })
+  /** Get hotels by city*/
+  static async getHotelsByCity(cityCode, stateCode, adult, children, page) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type: "city", cityCode: `${cityCode}`, stateCode: `${stateCode}`, adult: `${adult}`, children: `${children}`, page: `${page}` } })
     return res
   }
-
-  static async getHotelsByZip(zipCode, adult, children,page) {
-    let res = await axios.get(`${BASE_URL}/city`, { params: { type:"zip", zipCode: `${zipCode}`, adult: `${adult}`, children: `${children}`,page:`${page}` } })
+  /** Get hotels by zip code*/
+  static async getHotelsByZip(zipCode, adult, children, page) {
+    let res = await axios.get(`${BASE_URL}/city`, { params: { type: "zip", zipCode: `${zipCode}`, adult: `${adult}`, children: `${children}`, page: `${page}` } })
     return res
   }
 
   /** Get the current user. */
-
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
 
   /** Get token for login from username, password. */
-
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
     return res.token;
@@ -95,14 +90,13 @@ class HotelApi {
 
   /** Save plan. */
   static async savePlan(username, planData) {
-    let res = await this.request(`users/${username}`, planData, "post");
+    let res = await this.request(`plan/${username}`, planData, "post");
     return res.plan
   }
 
   /** Get user's plan. */
   static async getUserPlan(username) {
     let res = await this.request(`plan/${username}`)
-    // console.log(res)
     return res
   }
 
@@ -112,6 +106,7 @@ class HotelApi {
     return res;
   }
 
+  /** Update plan status */
   static async planStatusChange(username, planId, planStatus) {
     let res = await this.request(`plan/${username}/${planId}`, planStatus, "patch");
     return res;

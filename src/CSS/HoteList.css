@@ -1,8 +1,15 @@
 .hotelList {
     box-shadow:0.5rem 0.5rem 1.5rem rgb(179, 179, 179);
     margin:1rem 0;
+    
 }
 
+.hotel-list-image{
+    background-repeat:no-repeat ;
+    background-position:center ;
+    background-size: cover;
+    height:15rem;
+}
 
 .hotelFeature{
     border:0.15rem solid green; 

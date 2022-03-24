@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../CSS/Footer.css"
 
 function Footer() {
-
     return (
         <div className="footer">
             <div className="footer-content">

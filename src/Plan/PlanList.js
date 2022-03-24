@@ -22,13 +22,10 @@ function PlanList() {
     async function getUserPlan(username) {
         let userPlan = await HotelApi.getUserPlan(username);
         setUserPlan(userPlan);
-        console.log(userPlan)
     }
 
     const handleDeleteClick = (e) => {
         let planId = e.target.getAttribute("plan_id");
-        console.log(planId);
-        console.log(username);
         deletePlan(username, planId);
         getUserPlan(username);
     }
@@ -53,7 +50,6 @@ function PlanList() {
             alert.show("The plan has been deleted.");
         }
         catch (e) {
-            console.log(e);
             alert.show("Delete Plan Error: \n" + e[0]);
         }
     }
@@ -90,13 +86,16 @@ function PlanList() {
                             <div> {p.city}, {p.state} {p.zip}</div>
                         </div>
                         <div className="plan-status-grid">
-                            <div className="plan-status-content">Have you traveled to this destination yet? Mark as completed!</div>
+                            <div className="plan-status-content">
+                                Have you traveled to this destination yet? 
+                                <div> Mark as completed!</div>
+                                </div>
                             <div className="plan-status-btn">
-                            {p.status == "pending" ? (<button className="plan-btn" plan_id={p.user_plan_id} onClick={handlePlanCompleteClick}>Completed</button>)
+                            {p.status == "pending" ? (<button className="plan-btn-completed" plan_id={p.user_plan_id} onClick={handlePlanCompleteClick}>Completed</button>)
                                 : null
 
                             }
-                            {p.status == "completed" ? (<button className="plan-btn" plan_id={p.user_plan_id} onClick={handlePlanUncompleteClick}>uncompleted</button>)
+                            {p.status == "completed" ? (<button className="plan-btn-uncompleted" plan_id={p.user_plan_id} onClick={handlePlanUncompleteClick}>uncompleted</button>)
                                 : null
 
                             }
@@ -108,6 +107,5 @@ function PlanList() {
             </div>
     )
 }
-
 
 export default PlanList;

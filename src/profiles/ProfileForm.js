@@ -5,7 +5,6 @@ import UserContext from "../auth/UserContext";
 import useTimedMessage from "../hooks/useTimedMessage";
 import "../CSS/ProfileForm.css"
 
-
 /** Profile editing form.
  *
  * Displays profile form and handles changes to local form state.
@@ -29,16 +28,16 @@ function ProfileForm() {
     username: currentUser.username,
     password: "",
   });
- 
+
   const [formErrors, setFormErrors] = useState([]);
   const [saveConfirmed, setSaveConfirmed] = useTimedMessage()
 
   console.debug(
-      "ProfileForm",
-      "currentUser=", currentUser,
-      "formData=", formData,
-      "formErrors=", formErrors,
-      "saveConfirmed=", saveConfirmed,
+    "ProfileForm",
+    "currentUser=", currentUser,
+    "formData=", formData,
+    "formErrors=", formErrors,
+    "saveConfirmed=", saveConfirmed,
   );
 
   /** on form submit:
@@ -68,7 +67,7 @@ function ProfileForm() {
       return;
     }
 
-    setFormData(f => ({ ...f}));
+    setFormData(f => ({ ...f }));
     setFormErrors([]);
     setSaveConfirmed(true);
 
@@ -87,68 +86,57 @@ function ProfileForm() {
   }
 
   return (
-      <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4 profileForm">
-        <div className="card">
-          <div className="card-body">
+    <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4 profileForm">
+      <div className="card">
+        <div className="card-body">
           <h3> {formData.username}'s Profile</h3>
-            <form>
-              <div className="form-group profile-form-group">
-                <label>First Name</label>
-                <input
-                    name="firstName"
-                    className="form-control"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                />
-              </div>
-              <div className="form-group profile-form-group">
-                <label>Last Name</label>
-                <input
-                    name="lastName"
-                    className="form-control"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                />
-              </div>
-              <div className="form-group profile-form-group">
-                <label>Email</label>
-                <input
-                    name="email"
-                    className="form-control"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-              </div>
-              {/* <div className="form-group profile-form-group">
-                <label>Confirm password to make changes:</label>
-                <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-              </div> */}
+          <form>
+            <div className="form-group profile-form-group">
+              <label>First Name</label>
+              <input
+                name="firstName"
+                className="form-control"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group profile-form-group">
+              <label>Last Name</label>
+              <input
+                name="lastName"
+                className="form-control"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group profile-form-group">
+              <label>Email</label>
+              <input
+                name="email"
+                className="form-control"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            {formErrors.length
+              ? <Alert type="danger" messages={formErrors} />
+              : null}
 
-              {formErrors.length
-                  ? <Alert type="danger" messages={formErrors} />
-                  : null}
+            {saveConfirmed
+              ?
+              <Alert type="success" messages={["Updated successfully."]} />
+              : null}
 
-              {saveConfirmed
-                  ?
-                  <Alert type="success" messages={["Updated successfully."]} />
-                  : null}
-
-              <button
-                  className="btn btn-primary btn-block mt-1 profileFormBtn"
-                  onClick={handleSubmit}
-              >
-                Save Changes
-              </button>
-            </form>
-          </div>
+            <button
+              className="btn btn-primary btn-block mt-1 profileFormBtn"
+              onClick={handleSubmit}
+            >
+              Save Changes
+            </button>
+          </form>
         </div>
       </div>
+    </div>
   );
 }
 

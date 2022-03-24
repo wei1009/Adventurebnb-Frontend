@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Page navigation example"
+  >
+    <ul
+      class="pagination"
+    >
+      <li
+        class="page-item"
+      >
+        <div
+          aria-label="Previous"
+          class="page-link"
+        >
+          <span
+            aria-hidden="true"
+          >
+            «
+          </span>
+        </div>
+      </li>
+      <li
+        class="page-item"
+      >
+        <div
+          aria-label="Next"
+          class="page-link"
+        >
+          <span
+            aria-hidden="true"
+          >
+            »
+          </span>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

@@ -13,7 +13,6 @@ function SearchZipsDropdownList ({ zip, state, onMouseDownEvent }) {
             </div>
         </li>
     )
-
 }
 
 export default SearchZipsDropdownList ;

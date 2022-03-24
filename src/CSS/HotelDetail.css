@@ -41,10 +41,19 @@
     padding:0.4rem;
 }
 
+.facility-field{
+ min-height:2rem;
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ flex-wrap:wrap;
+}
+
 .facility{
     color:#e76f51;
-    border: solid 3px #fdba83;
-    margin:4px;
+    border: solid 2px #fdba83;
+    margin-top:5px;
+    margin-right:5px;
     padding:1px
 }
 

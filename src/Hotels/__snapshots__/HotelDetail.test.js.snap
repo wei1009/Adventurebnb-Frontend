@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="hotel-detail-grid"
+  >
+    <div
+      class="grid-item-img "
+    >
+      <div
+        class="grid-border-img"
+      >
+        <img
+          class="hotel-img"
+          style="background-image: url(https://photos.hotelbeds.com/giata/41/412145/412145a_hb_a_001.jpg);"
+        />
+      </div>
+    </div>
+    <div
+      class="grid-item-name "
+    >
+      <div
+        class="grid-border"
+      >
+        <h3>
+          test
+        </h3>
+        <div>
+          test street, test, test 12345
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item-description"
+    >
+      <div
+        class="grid-border"
+      >
+        <span
+          class="facility"
+        >
+          test
+        </span>
+        <span
+          class="facility"
+        >
+          test
+        </span>
+        <div
+          class="hotel-description"
+        >
+          test
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item-map"
+    >
+      <div
+        class="grid-border"
+      >
+        <iframe
+          class="google-map"
+          src="/"
+          style="display: block; border: 0px;"
+          width="100%"
+        />
+      </div>
+    </div>
+    <div
+      class="grid-item-issue"
+    >
+      <div
+        class="grid-border"
+      >
+        <div
+          class="hotel-issue"
+        >
+          test
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

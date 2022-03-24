@@ -1,15 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import HotelApi from "../api/api";
 import '../CSS/HotelRoomCard.css';
+
+/** Show information about a hotel's room
+ *
+ * Is rendered by HotelInfomation to show a "card" for each room.
+ *
+ * HotelInfomation -> HotelRoomCard
+ */
 
 function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, children, description, image, checkInDate, checkOutDate }) {
     const { currentUser } = useContext(UserContext);
     const history = useHistory();
     const [saveErrors, setSaveErrors] = useState([]);
     const [saveConfirmed, setSaveConfirmed] = useState(false);
-    
+
 
     const handleClick = (e) => {
         if (!currentUser) {
@@ -25,14 +32,13 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
                     description: description,
                     checkInDate: checkInDate,
                     checkOutDate: checkOutDate,
-                    status:"pending"
+                    status: "pending"
                 }
                 saveAllPlan(username, planData)
-            } catch(errors) {
+            } catch (errors) {
                 setSaveErrors(errors);
                 return;
             }
-
             setSaveErrors([])
             setSaveConfirmed(true);
         }
@@ -42,9 +48,7 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
         let plan = await HotelApi.savePlan(username, planData)
     }
 
-
     return (
-
         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0 room-card-list">
             <div className="card shadow-lg border-0 d-block room-card">
                 <img src={image} alt="Card image cap" className="card-img-top room-card-img" />
@@ -57,7 +61,6 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
                 </div>
             </div>
         </div>
-
     )
 }
 

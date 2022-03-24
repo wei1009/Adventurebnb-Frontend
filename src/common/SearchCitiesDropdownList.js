@@ -2,10 +2,8 @@ import React from "react";
 
 function SearchCitiesDropdownList({index, city, state, onMouseDownEvent}) {
     console.debug("SearchCitiesDropdownList ", city);
-    //let cityCode=concat(city,"-",state)
 
     return (
-
         <li className="searchHotelsDropdownItem" type="city" city_code={city} state_code={state} onMouseDown={onMouseDownEvent}>
             <div>
                 <span className="searchCityDropdown">
@@ -19,7 +17,6 @@ function SearchCitiesDropdownList({index, city, state, onMouseDownEvent}) {
                 </div>
             </div>
         </li>
-
     )
 }
 

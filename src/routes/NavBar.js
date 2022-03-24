@@ -3,10 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
 import UserContext from "../auth/UserContext";
 import { PersonPlusFill, BoxArrowInRight, CardList, PersonCircle } from "react-bootstrap-icons";
-import Logo from '../logo.jpg';
 import "../CSS/NavBar.css";
-
-
 
 function NavBar({ logout }) {
     const { currentUser } = useContext(UserContext);

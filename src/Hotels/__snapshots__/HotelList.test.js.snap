@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container hotelList"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-lg-4 hotel-list-image"
+        style="background-image: url(https://photos.hotelbeds.com/giata/41/412145/412145a_hb_a_001.jpg);"
+      />
+      <div
+        class=" col-lg-6 "
+      >
+        <h4>
+          test
+        </h4>
+        <div
+          class="hotelFeature"
+        >
+          <h6
+            class="hotelFeatureContent"
+          >
+             test
+          </h6>
+        </div>
+        <div
+          class=" hotelInfomation"
+        >
+          <div>
+            test street, test, test  12345
+          </div>
+          <a
+            href="/"
+          >
+            /
+          </a>
+          <div />
+        </div>
+      </div>
+      <div
+        class="hotelSubInformation col-lg-2"
+      >
+        <div
+          class="ranking"
+        >
+          <div>
+            rate:
+          </div>
+          <div>
+            ranking:
+          </div>
+        </div>
+        <a
+          class="btn btn-md btn-primary hotelListBtn"
+          href="http://localhost:3000/hotel?type=hotel&hotel_code=12345&checkInDate=2022-03-10&checkOutDate=2022-03-12&adult=2&children=3"
+        >
+          Go to hotel
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

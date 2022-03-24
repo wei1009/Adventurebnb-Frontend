@@ -23,28 +23,28 @@ function App() {
     "infoLoaded=", infoLoaded,
     "currentUser=", currentUser,
     "token=", token,
-);
+  );
 
-useEffect(function loadUserInfo() {
-  console.debug("App useEffect loadUserInfo", "token=", token);
+  useEffect(function loadUserInfo() {
+    console.debug("App useEffect loadUserInfo", "token=", token);
 
-  async function getCurrentUser() {
-    if (token) {
-      try {
-        let { username } = jwt.decode(token);
-        // put the token on the Api class so it can use it to call the API.
-        HotelApi.token = token;
-        let currentUser = await HotelApi.getCurrentUser(username);
-        setCurrentUser(currentUser);
-        setApplicationIds(new Set(currentUser.applications));
-      } catch (err) {
-        console.error("App loadUserInfo: problem loading", err);
-        setCurrentUser(null);
+    async function getCurrentUser() {
+      if (token) {
+        try {
+          let { username } = jwt.decode(token);
+          // put the token on the Api class so it can use it to call the API.
+          HotelApi.token = token;
+          let currentUser = await HotelApi.getCurrentUser(username);
+          setCurrentUser(currentUser);
+          setApplicationIds(new Set(currentUser.applications));
+        } catch (err) {
+          console.error("App loadUserInfo: problem loading", err);
+          setCurrentUser(null);
+        }
       }
+      setInfoLoaded(true);
     }
-    setInfoLoaded(true);
-  }
-  
+
     // set infoLoaded to false while async getCurrentUser runs; once the
     // data is fetched (or even if an error happens!), this will be set back
     // to false to control the spinner.
@@ -78,10 +78,10 @@ useEffect(function loadUserInfo() {
   }
 
 
- /** Handles site-wide login.
-   *
-   * Make sure you await this function and check its return value!
-   */
+  /** Handles site-wide login.
+    *
+    * Make sure you await this function and check its return value!
+    */
   async function login(loginData) {
     try {
       let token = await HotelApi.login(loginData);
@@ -97,12 +97,12 @@ useEffect(function loadUserInfo() {
 
   return (
     <BrowserRouter>
-    <UserContext.Provider
-            value={{ currentUser, setCurrentUser}}>
-    <div className="App">
-      <NavBar logout={logout}/>
-      <Routes  login={login} signup={signup} />
-      </div>
+      <UserContext.Provider
+        value={{ currentUser, setCurrentUser }}>
+        <div className="App">
+          <NavBar logout={logout} />
+          <Routes login={login} signup={signup} />
+        </div>
       </UserContext.Provider>
     </BrowserRouter>
   )

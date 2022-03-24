@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import SearchBar from "../common/SearchBar";
 import HotelList from "./HotelList";
 import HotelCityBanner from "./HotelCityBanner";
@@ -10,12 +10,16 @@ import '../CSS/Hotels.css';
 import { useAlert } from 'react-alert'
 import { returnHomePageWithDelay } from "../common/CommonFunction";
 
+/** Show search result of hotels:
+ *
+ * Show a list of hotels by city or zip code
+ *
+ */
 
 function Hotels() {
     const [hotelData, setHotelData] = useState(null);
     const locationSearch = useLocation().search;
-    const [totalCount,setTotalCount]=useState()
-    const history = useHistory();
+    const [totalCount, setTotalCount] = useState()
     const type = new URLSearchParams(locationSearch).get("type");
     const cityCode = new URLSearchParams(locationSearch).get("city_code");
     const stateCode = new URLSearchParams(locationSearch).get("state_code");
@@ -47,8 +51,6 @@ function Hotels() {
             let response = await HotelApi.getHotelsByCity(cityCode, stateCode, adult, children, page);
             setHotelData(response.data.hotelData);
             setTotalCount(response.data.totalCount);
-            console.log(response.data.totalCount)
-            console.log(response.data.hotelData)
         }
         catch (err) {
             alert.show("Get Hotels by City Error: \n" + err.response.data);
@@ -100,20 +102,19 @@ function Hotels() {
                         hotelCode={h.code}
                         adult={adult}
                         children={children}
-
                     />
                 ))}
             </div>
             <div className="pagination-area">
                 <Pagination totalCount={totalCount}
-                            type={type}
-                            city={cityCode}
-                            state={stateCode}
-                            checkInDate={checkInDate}
-                            checkOutDate={checkOutDate}
-                            adult={adult}
-                            children={children}   
-                /> 
+                    type={type}
+                    city={cityCode}
+                    state={stateCode}
+                    checkInDate={checkInDate}
+                    checkOutDate={checkOutDate}
+                    adult={adult}
+                    children={children}
+                />
             </div>
         </div>
     )

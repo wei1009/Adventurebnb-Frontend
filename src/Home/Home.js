@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../common/SearchBar";
 import TravelInfo from "./TravelInfo";
 import Footer from "./Footer";
@@ -8,7 +8,6 @@ function Home() {
     useEffect(function getHotelOnMount() {
       console.debug("HotelList useEffect getHotelOnMount");
     }, []);
-
 
     return (
         <div className="Home">

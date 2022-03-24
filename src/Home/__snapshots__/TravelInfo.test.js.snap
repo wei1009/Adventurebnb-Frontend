@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="home-Info-detail"
+  >
+    <div
+      class="city-destination-recommand"
+    >
+      <div
+        class="container"
+      >
+        <h2
+          class="destination-title"
+        >
+          Top destinations in the United States
+        </h2>
+        <div
+          class="city-layout column"
+        >
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=NEW+YORK&state_code=NY&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80);"
+            />
+            <span>
+              New York (NY)
+            </span>
+          </a>
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=LAS+VEGAS&state_code=NV&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1470076892663-af684e5e15af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1016&q=80);"
+            />
+            <span>
+              Las Vegas (NV)
+            </span>
+          </a>
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=LOS+ANGELES&state_code=CA&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1572975165675-ab322e4b55ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80);"
+            />
+            <span>
+              Los Angeles (CA)
+            </span>
+          </a>
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=ORLANDO&state_code=FL&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1575089776834-8be34696ffb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);"
+            />
+            <span>
+              Orlando (FL)
+            </span>
+          </a>
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=DALLAS&state_code=TX&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1563219125-60d10ffe8877?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80);"
+            />
+            <span>
+              Dallas (TX)
+            </span>
+          </a>
+          <a
+            class="city-destination row "
+            href="/hotelsearch?type=city&city_code=PHOENIX&state_code=AZ&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+          >
+            <img
+              class="city-destination-image"
+              style="background-image: url(https://images.unsplash.com/photo-1589046207215-b5ee3097bafc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);"
+            />
+            <span>
+              Phoenix (AZ)
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="home-grid"
+    >
+      <h3
+        class="home-grid-item-1"
+      >
+        Travel Makes You Happier
+      </h3>
+      <div
+        class="home-grid-item-2"
+        style="background-image: url(https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=449&q=80);"
+      />
+      <h3
+        class="home-grid-item-3"
+      >
+        “I travel because it makes me realize how much I haven’t seen, how much I’m not going to see, and how much I still need to see.” – Carew Papritz
+      </h3>
+      <div
+        class="home-grid-item-4"
+        style="background-image: url(https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80);"
+      />
+      <h3
+        class="home-grid-item-5"
+      >
+        Don't Listen to what they say. Go see.
+      </h3>
+      <div
+        class="home-grid-item-6"
+        style="background-image: url(https://images.unsplash.com/photo-1592555059503-0a774cb8d477?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80);"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -14,7 +14,6 @@ import "../CSS/SignupForm.css"
  * Routed as /signup
  */
 
-
 function SignupForm({ signup }) {
     const history = useHistory();
     const [formData, setFormData] = useState({
@@ -44,7 +43,6 @@ console.debug(
         if (result.success) {
             history.push("/");
         } else {
-            console.log(result.errors)
             setFormErrors(result.errors);
         }
     }
@@ -54,8 +52,6 @@ console.debug(
         const { name, value } = e.target;
         setFormData(data => ({ ...data, [name]: value }));
     }
-
-
 
     return (
         <div className="SignupForm">
@@ -127,8 +123,7 @@ console.debug(
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>  
     )
 }
 

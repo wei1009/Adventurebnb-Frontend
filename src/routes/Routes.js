@@ -11,8 +11,7 @@ import AlertTemplate from 'react-alert-template-basic';
 import PrivateRoute from "./PrivateRoute";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-
-function Routes({ login, signup }){
+function Routes({ login, signup }) {
 
   const options = {
     position: positions.TOP_CENTER,
@@ -20,55 +19,54 @@ function Routes({ login, signup }){
     offset: '25px',
     transition: transitions.SCALE
   }
-  
 
   console.debug(
     "Routes",
     `login=${typeof login}`,
     `register=${typeof register}`,
-);
+  );
 
-    return (
-       <main>
-            <Switch>
+  return (
+    <main>
+      <Switch>
 
-              <Route exact path="/">
-                <Home />
-              </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
 
-              <Route exact path="/hotel">
-                <HotelInfomation />
-              </Route>
+        <Route exact path="/hotel">
+          <HotelInfomation />
+        </Route>
 
-              <Route exact path="/hotelsearch">
-                <AlertProvider template={AlertTemplate} {...options}>
-                  <Hotels />
-                </AlertProvider>
-              </Route>
+        <Route exact path="/hotelsearch">
+          <AlertProvider template={AlertTemplate} {...options}>
+            <Hotels />
+          </AlertProvider>
+        </Route>
 
-              <Route exact path="/signup">
-                <SignupForm signup={signup} />
-              </Route>
+        <Route exact path="/signup">
+          <SignupForm signup={signup} />
+        </Route>
 
-              <Route exact path="/Login">
-                <LoginForm login={login}/>
-              </Route>
+        <Route exact path="/Login">
+          <LoginForm login={login} />
+        </Route>
 
-              <PrivateRoute exact path="/myplan">
-              <AlertProvider template={AlertTemplate} {...options}>
-                <PlanList />
-                </AlertProvider>
-              </PrivateRoute>
+        <PrivateRoute exact path="/myplan">
+          <AlertProvider template={AlertTemplate} {...options}>
+            <PlanList />
+          </AlertProvider>
+        </PrivateRoute>
 
-              <PrivateRoute exact path="/profile">
-                <ProfileForm />
-              </PrivateRoute>
+        <PrivateRoute exact path="/profile">
+          <ProfileForm />
+        </PrivateRoute>
 
-              <Redirect to="/" />
+        <Redirect to="/" />
 
-            </Switch>
-            </main>
-      );
+      </Switch>
+    </main>
+  );
 }
 
 export default Routes;

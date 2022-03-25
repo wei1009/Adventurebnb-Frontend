@@ -83,6 +83,19 @@ function Hotels() {
                         state={hotelData[0].state.code}
                     />
                 </div>
+            </div>
+            <div className="pagination-area">
+                <Pagination totalCount={totalCount}
+                    type={type}
+                    city={cityCode}
+                    state={stateCode}
+                    checkInDate={checkInDate}
+                    checkOutDate={checkOutDate}
+                    adult={adult}
+                    children={children}
+                />
+            </div>
+            <div className="hotelLists">
                 {hotelData.map(h => (
                     <HotelList
                         key={h.code}

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import HotelApi from "../api/api";
+import { useAlert } from 'react-alert'
 import '../CSS/HotelRoomCard.css';
 
 /** Show information about a hotel's room
@@ -16,7 +17,7 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
     const history = useHistory();
     const [saveErrors, setSaveErrors] = useState([]);
     const [saveConfirmed, setSaveConfirmed] = useState(false);
-
+    const alert = useAlert();
 
     const handleClick = (e) => {
         if (!currentUser) {
@@ -46,6 +47,7 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
 
     async function saveAllPlan(username, planData) {
         let plan = await HotelApi.savePlan(username, planData)
+        alert.show("Saved");
     }
 
     return (
@@ -56,7 +58,11 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
                     <h6 className="item1 cardDark">{description}</h6>
                     <div className="item2 card-text small text-muted font-italic">Sleeps {maxGuest} adult(s), {maxGuest - maxAdult} kid(s).</div>
                     <div className="item3">
+                        {currentUser? 
                         <button className="btn btn-sm btn-primary room-list-btn" onClick={handleClick}>Save plan</button>
+                        :null
+                        }
+                        
                     </div>
                 </div>
             </div>

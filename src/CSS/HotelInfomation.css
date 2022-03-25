@@ -10,3 +10,8 @@
     padding:0.1rem;
     background-color:rgba(201, 240, 248, 0.603);
 }
+
+.room-info{
+    text-align: end;
+    font-size: 1.2rem;
+}

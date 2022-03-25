@@ -65,6 +65,7 @@ function HotelInfomation() {
         <div className="room-list">
           <div className="container">
             <div className="row">
+              <div className="room-info">You can save your plan after login.</div>
               {hotelData.data.room.map((r, index) => (
                 <HotelRoomCard
                   key={index}

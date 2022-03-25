@@ -35,7 +35,9 @@ function Routes({ login, signup }) {
         </Route>
 
         <Route exact path="/hotel">
-          <HotelInfomation />
+          <AlertProvider template={AlertTemplate} {...options}>
+            <HotelInfomation />
+          </AlertProvider>
         </Route>
 
         <Route exact path="/hotelsearch">

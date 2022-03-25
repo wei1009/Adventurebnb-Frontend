@@ -11,12 +11,11 @@ import '../CSS/HoteList.css';
 function HotelList(
     { hotelName, hotelFeature, street, city, state, postalCode, web, phone, image, rate, ranking,
         checkInDate, checkOutDate, hotelCode, adult, children }) {
-    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
     return (
         <>
             <div className="container hotelList">
                 <div className="row">
-                    <div className="col-lg-4 hotel-list-image" style={{ backgroundImage: `url(${image})` }}>
+                    <div className="col-lg-4 hotel-list-image" style={{ backgroundImage: `url(${image})`}}>
                     </div>
 
                     <div className=" col-lg-6 ">
@@ -42,7 +41,7 @@ function HotelList(
                             </div>
                         </div>
                         <a className="btn btn-md btn-primary hotelListBtn"
-                            href={`${BASE_URL}/hotel?type=hotel&hotel_code=${hotelCode}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}`}>
+                            href={`/hotel?type=hotel&hotel_code=${hotelCode}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}`}>
                             Go to hotel
                         </a>
                     </div>

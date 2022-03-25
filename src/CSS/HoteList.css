@@ -1,7 +1,6 @@
 .hotelList {
     box-shadow:0.5rem 0.5rem 1.5rem rgb(179, 179, 179);
     margin:1rem 0;
-    
 }
 
 .hotel-list-image{
@@ -52,4 +51,8 @@
         margin-bottom:1rem;
         float:right;
     }
+}
+
+.pagination-area{
+    font-size:1rem;
 }

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import '../CSS/Pagination.css';
 
 function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, adult, children }) {
     const history = useHistory();
     const locationSearch = useLocation().search;
-    const CurrentPage = new URLSearchParams(locationSearch).get("page");
+    let CurrentPage =new URLSearchParams(locationSearch).get("page");
     let page = Math.floor(totalCount / 50) + 1;
     let pageCount = []
     for (let i = 1; i <= page; i++) {
@@ -38,7 +37,7 @@ function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, 
         }
 
         else {
-            let p = CurrentPage + 1;
+            let p =parseInt(CurrentPage)  + 1;
             history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${p}`);
             window.location.reload()
         }

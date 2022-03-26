@@ -13,9 +13,9 @@ This app is hotel searching that allows users to search for hotels using a city 
 
 ## Features
 
-1.When using the hotel search feature, users can search for hotels using US city names, zip codes, and hotel names. Additionally, you can enter the check-in and check-out dates and the number of guests for searching.  
-2.If users search by city name and zip code, it will show a list of hotel in the city or zip code. Users can view detailed information about the hotel that interests them by selecting it from the list.  
-3.If users search by hotel name or select the hotel from city/ zip code hotels list page, it will show a list of hotel room types depending on how many guests will be visiting the hotel.
+1. When using the hotel search feature, users can search for hotels using US city names, zip codes, and hotel names. Additionally, you can enter the check-in and check-out dates and the number of guests for searching.  
+2. If users search by city name and zip code, it will show a list of hotel in the city or zip code. Users can view detailed information about the hotel that interests them by selecting it from the list.    
+3. If users search by hotel name or select the hotel from city/ zip code hotels list page, it will show a list of hotel room types depending on how many guests will be visiting the hotel.  
 4. Once a user creates an account, they can edit their profile and save search results as a accommodation plan.
 5. Users can delete a plan and mark it as complete.  
 
@@ -98,6 +98,9 @@ Run the following command in your terminal in the backend directory to create th
 Frontend:  
 
 	`npm start`  
+Backend:  
+
+	`node server.js`
 
 
 ### Test the frontend directory

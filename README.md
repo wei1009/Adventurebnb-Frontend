@@ -1,9 +1,8 @@
 # Hotel search service with hotel accommodation plan App 
 
 
-####  [Try live app here!](http://hotel-search-service.surge.sh/) 
+##  [Try live app here!](http://hotel-search-service.surge.sh/) 
 
-___
 
 ![hoempage](/images/homepage-img.png "homepage")
 

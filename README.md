@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Hotel search service with hotel accommodation plan App 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+####  [Try live app here!](http://hotel-search-service.surge.sh/) 
 
-In the project directory, you can run:
+___
 
-### `npm start`
+![hoempage](/images/homepage-img.png "homepage")
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About the App
 
-### `npm test`
+This app is hotel searching that allows users to search for hotels using a city name, zip code, and hotel name in the US. Users can login and edit their profile information, as well as save search results as a accommodation plan.   
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+1.When using the hotel search feature, users can search for hotels using US city names, zip codes, and hotel names. Additionally, you can enter the check-in and check-out dates and the number of guests for searching.  
+2.If users search by city name and zip code, it will show a list of hotel in the city or zip code. Users can view detailed information about the hotel that interests them by selecting it from the list.  
+3.If users search by hotel name or select the hotel from city/ zip code hotels list page, it will show a list of hotel room types depending on how many guests will be visiting the hotel.
+4. Once a user creates an account, they can edit their profile and save search results as a accommodation plan.
+5. Users can delete a plan and mark it as complete.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## User Flow
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![hoempage](/images/userflow.png "homepage")  
 
-### `npm run eject`
+## APIs  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[Hotel Content API](https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels)  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Google Map API](https://www.google.com/maps/embed/v1/place)  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Built With  
 
-## Learn More
+The coding languages, frameworks, and libraries that I used to build this project:  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* JavaScript
+* React
+* HTML
+* CSS
+* Axios  
 
-### Code Splitting
+Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Node.js
+* Express.js
+* PostgreSQL
+* JSON Schema
+* bcrypt
 
-### Analyzing the Bundle Size
+## How to Run the Project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To get a local copy up and running follow these steps:  
 
-### Making a Progressive Web App
+### Clone Repos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Download the [HotelSearchService-Frontend](https://github.com/wei1009/HotelSearchService-Frontend) ZIP or enter the following in the desired directory in your terminal:  
 
-### Advanced Configuration
+ 	`https://github.com/wei1009/HotelSearchService-Frontend.git`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Download the [HotelSearchService-Backend](https://github.com/wei1009/HotelSearchService-Backend) ZIP or enter the following in the desired directory in your terminal: 
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ 	`https://github.com/wei1009/HotelSearchService-Backend.git`  
 
-### `npm run build` fails to minify
+### Library Installations 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Install the libraries in each frontend and backend repo  
+
+	`npm install`
+
+### API KEY setting  
+
+Create .env file:  
+
+Set up API _ KEY and API _ SECRET from [Hotel Content API](https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels)  
+Set up GOOGLE_API_KEY from [Google Map API](https://www.google.com/maps/embed/v1/place) 
+
+
+
+### Postgres Installation  
+
+Install [Postgres](https://www.postgresql.org/).  
+
+Create a database "hotel" in your terminal in the backend directory.
+
+	`createdb hotel`   
+
+Run the following command in your terminal in the backend directory to create the database tables and seed data to database. (Please wait a few seconds. )  
+
+	`psql -d hotel -f hotel-schema.sql -f hotel-seed.sql`  
+
+### Start the server   
+
+Frontend:  
+
+	`npm start`  
+
+
+### Test the frontend directory
+
+	`npm test`

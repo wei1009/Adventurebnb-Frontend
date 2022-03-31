@@ -2,8 +2,10 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import HotelApi from "../api/api";
+import noRoomImage from "../images/NoImageRoom.jpg";
 import { useAlert } from 'react-alert'
 import '../CSS/HotelRoomCard.css';
+import { milliseconds } from "date-fns";
 
 /** Show information about a hotel's room
  *
@@ -53,10 +55,12 @@ function HotelRoomCard({ hotelName, hotelCode, maxGuest, maxAdult, adult, childr
     return (
         <div className="col-lg-4 col-md-6 mb-4 mb-lg-0 room-card-list">
             <div className="card shadow-lg border-0 d-block room-card">
-                <img src={image} alt="Card image cap" className="card-img-top room-card-img" />
+                {image? <img src={image} alt="Card image cap" className="card-img-top room-card-img" />
+                        :<img src={noRoomImage} alt="Card image cap" className="card-img-top room-card-img" />
+                }
                 <div className="card-body p-2 room-detail-grid">
                     <h6 className="item1 cardDark">{description}</h6>
-                    <div className="item2 card-text small text-muted font-italic">Sleeps {maxGuest} adult(s), {maxGuest - maxAdult} kid(s).</div>
+                    <div className="item2 card-text small text-muted font-italic">Sleeps {maxGuest} Guests.</div>
                     <div className="item3">
                         {currentUser? 
                         <button className="btn btn-sm btn-primary room-list-btn" onClick={handleClick}>Save plan</button>

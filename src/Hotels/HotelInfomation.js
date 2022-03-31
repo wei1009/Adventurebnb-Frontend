@@ -65,7 +65,10 @@ function HotelInfomation() {
         <div className="room-list">
           <div className="container">
             <div className="row">
-              <div className="room-info">You can save your plan after login.</div>
+              {hotelData.data.room.length > 0?
+                <div className="room-info">You can save your plan after login.</div>
+                :<div>Cannot find rooms. Please change your search criteria.</div>
+              }
               {hotelData.data.room.map((r, index) => (
                 <HotelRoomCard
                   key={index}
@@ -76,7 +79,7 @@ function HotelInfomation() {
                   adult={adult}
                   children={children}
                   description={r.description}
-                  image={r.roomImages[0].path}
+                  image={r.roomImages? r.roomImages[0].path: null}
                   checkInDate={checkInDate}
                   checkOutDate={checkOutDate}
                 />

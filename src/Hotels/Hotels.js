@@ -89,6 +89,7 @@ function Hotels() {
                     type={type}
                     city={cityCode}
                     state={stateCode}
+                    zip={zipCode}
                     checkInDate={checkInDate}
                     checkOutDate={checkOutDate}
                     adult={adult}
@@ -105,8 +106,8 @@ function Hotels() {
                         city={h.city.content}
                         state={h.stateCode}
                         postalCode={h.postalCode}
-                        web={h.web}
-                        phone={h.mainPhone}
+                        web={h.webFormatted}
+                        phone={h.mainPhoneFormatted}
                         image={h.mainImage}
                         rate={h.S2C}
                         ranking={h.ranking}
@@ -123,6 +124,7 @@ function Hotels() {
                     type={type}
                     city={cityCode}
                     state={stateCode}
+                    zip={zipCode}
                     checkInDate={checkInDate}
                     checkOutDate={checkOutDate}
                     adult={adult}

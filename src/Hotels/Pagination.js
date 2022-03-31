@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
-function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, adult, children }) {
+function Pagination({ totalCount, type, city, state, zip, checkInDate, checkOutDate, adult, children }) {
     const history = useHistory();
     const locationSearch = useLocation().search;
     let CurrentPage =new URLSearchParams(locationSearch).get("page");
@@ -13,44 +13,54 @@ function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, 
 
     function handlePaginationClick(e) {
         let p = e.target.innerText;
-        history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${p}`);
+        history.push(getPagingURL(p));
         window.location.reload()
     }
 
     function handlePreviousPageClick(e) {
-        if (CurrentPage == null || CurrentPage == pageCount[0]) {
-            history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${CurrentPage}`)
-        } else {
-            let p = CurrentPage - 1;
-            history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${p}`);
-            window.location.reload()
-        }
+        let p = CurrentPage - 1;
+        
+        history.push(getPagingURL(p));
+        window.location.reload()
     }
 
     function handleNextPageClick(e) {
-        if (CurrentPage == pageCount[pageCount.length - 1]) {
-            history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${CurrentPage}`)
-        } else if (CurrentPage == null || CurrentPage == pageCount[0]) {
-            let p = 2;
-            history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${p}`);
-            window.location.reload()
+        let p
+
+        if (CurrentPage == null){
+            p=2;
+        }
+        else{
+            p=CurrentPage + 1;
         }
 
-        else {
-            let p =parseInt(CurrentPage)  + 1;
-            history.push(`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${p}`);
-            window.location.reload()
+        history.push(getPagingURL(p));
+        window.location.reload()
+    }
+
+
+    function getPagingURL(pageNum){
+        if (type =="city"){
+            return (`/hotelsearch?type=${type}&city_code=${city}&state_code=${state}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${pageNum}`);
+        }
+        else if (type == "zip"){
+            return (`/hotelsearch?type=${type}&zip_code=${zip}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}&page=${pageNum}`);
+        }
+        else{
+            return (`/hotel?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&adult=${adult}&children=${children}`);
         }
     }
 
     return (
         <nav aria-label="Page navigation example" >
             <ul className="pagination">
-                <li className="page-item" onClick={handlePreviousPageClick}>
-                    <div className="page-link" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </div>
-                </li>
+                {(CurrentPage !== null && parseInt(CurrentPage) > 1) && 
+                    (<li className="page-item" onClick={handlePreviousPageClick}>
+                        <div className="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </div>
+                    </li>)
+                }
                 {pageCount.map(p => (
                     <li className="page-item" onClick={handlePaginationClick}>
                         <div className="page-link">
@@ -58,11 +68,13 @@ function Pagination({ totalCount, type, city, state, checkInDate, checkOutDate, 
                         </div>
                     </li>
                 ))}
+                {(CurrentPage == null || parseInt(CurrentPage) < pageCount.length) &&
                 <li className="page-item" onClick={handleNextPageClick}>
                     <div className="page-link" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </div>
                 </li>
+                }
             </ul>
         </nav>
     )

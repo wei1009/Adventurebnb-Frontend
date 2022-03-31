@@ -11,6 +11,11 @@ import '../CSS/HoteList.css';
 function HotelList(
     { hotelName, hotelFeature, street, city, state, postalCode, web, phone, image, rate, ranking,
         checkInDate, checkOutDate, hotelCode, adult, children }) {
+        
+    let absoulteUrl;
+
+
+
     return (
         <>
             <div className="container hotelList">
@@ -27,8 +32,8 @@ function HotelList(
                         </div>
                         <div className=" hotelInfomation">
                             <div >{street}, {city}, {state} {postalCode}</div>
-                            <a href={web}>{web}</a>
-                            <div >{phone}</div>
+                            <a href={web} target="_blank">{web}</a>
+                            <div>{phone}</div>
                         </div>
                     </div>
                     <div className="hotelSubInformation col-lg-2">

@@ -59,18 +59,18 @@ To get a local copy up and running follow these steps:
 
 Download the [HotelSearchService-Frontend](https://github.com/wei1009/HotelSearchService-Frontend) ZIP or enter the following in the desired directory in your terminal:  
 
- 	`https://github.com/wei1009/HotelSearchService-Frontend.git`  
+ 	https://github.com/wei1009/HotelSearchService-Frontend.git  
 
 Download the [HotelSearchService-Backend](https://github.com/wei1009/HotelSearchService-Backend) ZIP or enter the following in the desired directory in your terminal: 
 
 
- 	`https://github.com/wei1009/HotelSearchService-Backend.git`  
+ 	https://github.com/wei1009/HotelSearchService-Backend.git 
 
 ### Library Installations 
 
 Install the libraries in each frontend and backend repo  
 
-	`npm install`
+	npm install
 
 ### API KEY setting  
 
@@ -87,22 +87,23 @@ Install [Postgres](https://www.postgresql.org/).
 
 Create a database "hotel" in your terminal in the backend directory.
 
-	`createdb hotel`   
+	createdb hotel   
 
 Run the following command in your terminal in the backend directory to create the database tables and seed data to database. (Please wait a few seconds. )  
 
-	`psql -d hotel -f hotel-schema.sql -f hotel-seed.sql`  
+	psql -d hotel -f hotel-schema.sql -f hotel-seed.sql  
 
 ### Start the server   
 
 Frontend:  
 
-	`npm start`  
+	npm start  
 Backend:  
 
-	`node server.js`
+	node server.js
 
 
-### Test the frontend directory
+### Test the frontend directory  
+Test all file in the test folder
 
-	`npm test`
+	npm test

@@ -1,4 +1,4 @@
-# Hotel search service with hotel accommodation plan App 
+# Adventurebnb
 
 
 ##  [Try live app here!](http://hotel-search-service.surge.sh/) 

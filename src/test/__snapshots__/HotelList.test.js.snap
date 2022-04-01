@@ -35,6 +35,7 @@ exports[`matches snapshot 1`] = `
           </div>
           <a
             href="/"
+            target="_blank"
           >
             /
           </a>
@@ -56,7 +57,7 @@ exports[`matches snapshot 1`] = `
         </div>
         <a
           class="btn btn-md btn-primary hotelListBtn"
-          href="http://localhost:3000/hotel?type=hotel&hotel_code=12345&checkInDate=2022-03-10&checkOutDate=2022-03-12&adult=2&children=3"
+          href="/hotel?type=hotel&hotel_code=12345&checkInDate=2022-03-10&checkOutDate=2022-03-12&adult=2&children=3"
         >
           Go to hotel
         </a>

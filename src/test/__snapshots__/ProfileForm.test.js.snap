@@ -47,6 +47,7 @@ exports[`matches snapshot 1`] = `
             </label>
             <input
               class="form-control"
+              disabled=""
               name="email"
               value="test@test.net"
             />

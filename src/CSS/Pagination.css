@@ -1,0 +1,8 @@
+.current-page{
+    background-color: rgb(37, 85, 241) !important; 
+    color: white !important;
+}
+
+.previous-page :hover, .next-page :hover, .non-current-page :hover{
+    cursor: pointer;
+}

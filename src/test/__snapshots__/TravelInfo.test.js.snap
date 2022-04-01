@@ -21,7 +21,7 @@ exports[`matches snapshot 1`] = `
         >
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=NEW+YORK&state_code=NY&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=NEW+YORK&state_code=NY&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"
@@ -33,7 +33,7 @@ exports[`matches snapshot 1`] = `
           </a>
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=LAS+VEGAS&state_code=NV&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=LAS+VEGAS&state_code=NV&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"
@@ -45,7 +45,7 @@ exports[`matches snapshot 1`] = `
           </a>
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=LOS+ANGELES&state_code=CA&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=LOS+ANGELES&state_code=CA&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"
@@ -57,7 +57,7 @@ exports[`matches snapshot 1`] = `
           </a>
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=ORLANDO&state_code=FL&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=ORLANDO&state_code=FL&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"
@@ -69,7 +69,7 @@ exports[`matches snapshot 1`] = `
           </a>
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=DALLAS&state_code=TX&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=DALLAS&state_code=TX&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"
@@ -81,7 +81,7 @@ exports[`matches snapshot 1`] = `
           </a>
           <a
             class="city-destination row "
-            href="/hotelsearch?type=city&city_code=PHOENIX&state_code=AZ&checkInDate=2022-03-23&checkOutDate=2022-03-24&adult=2&children=0"
+            href="/hotelsearch?type=city&city_code=PHOENIX&state_code=AZ&checkInDate=2022-04-01&checkOutDate=2022-04-02&adult=2&children=0"
           >
             <img
               class="city-destination-image"

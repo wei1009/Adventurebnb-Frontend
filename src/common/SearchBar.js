@@ -7,7 +7,8 @@ import SearchHotelsDropdownList from "./SearchHotelsDropdownList";
 import { RangeDatePicker } from 'react-google-flight-datepicker';
 import 'react-google-flight-datepicker/dist/main.css';
 import "react-datepicker/dist/react-datepicker.css";
-import "../CSS/SearchBar.css"
+import "../CSS/SearchBar.css";
+import { useAlert } from 'react-alert';
 
 const initialState = {
     startDate: null,
@@ -62,6 +63,8 @@ function SearchBar() {
         state_code: "",
         zip_code: ""
     })
+
+    const alert = useAlert();
 
     //dropdown change than change data
     const [guestInputVal, setGuestInputVal] = useState();
@@ -148,6 +151,14 @@ function SearchBar() {
     }, [isFocus]);
 
     useEffect(() => {
+        if (searchTerm == ""){
+            setSearchType(null);
+            setHotelCode(null);
+            setCityCode(null);
+            setStateCode(null);
+            setZipCode(null);
+        }
+
         if (isFocus) {
             filerSearchHotelsDropdown();
         }
@@ -184,10 +195,21 @@ function SearchBar() {
     }
 
     function handleFormSubmit(e) {
+
+        let searchHotelTextbox = document.getElementById("searchHotelTextbox")
+
+        if ((formSearchType !== "hotel" && formSearchType !== "city" && formSearchType !== "zip") || searchHotelTextbox.value.trim() == "")
+        {
+            alert.show("Please enter the city, zip, or hotel name.");
+            e.preventDefault();
+        }
         //console.log(formData)
     }
 
     function handleBlur(e) {
+        let searchHotelTextbox = document.getElementById("searchHotelTextbox");
+        setSearchTerm(searchHotelTextbox.value);
+
         if (!e.currentTarget.contains(e.relatedTarget)) {
             setisFocus(false);
         }
@@ -233,6 +255,15 @@ function SearchBar() {
                 setZipCode(null);
                 searchHotelTextbox.value = defaultHotel.name
             }
+        }
+        else if (querySearchType == "zip" && queryZipCode !== null && queryZipCode !== undefined
+            && queryStateCode !== null && queryStateCode !== undefined) {
+            setSearchType(querySearchType);
+            setHotelCode(null);
+            setCityCode(null);
+            setStateCode(queryStateCode);
+            setZipCode(queryZipCode);
+            searchHotelTextbox.value = queryZipCode + ", " + queryStateCode
         }
     }
 

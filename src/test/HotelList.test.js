@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import HotelList from "./HotelList";
+import HotelList from "../Hotels/HotelList";
 import { MemoryRouter } from "react-router";
 
 // TODO: woefully under-tested!

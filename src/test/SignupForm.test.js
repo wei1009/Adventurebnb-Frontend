@@ -1,15 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Profile from "./ProfileForm";
-import { UserProvider } from "../testUtils";
-
-// TODO: woefully under-tested!
+import SignupForm from "../auth/SignupForm";
+import { MemoryRouter } from "react-router";
 
 it("matches snapshot", function () {
   const { asFragment } = render(
-      <UserProvider>
-        <Profile />
-      </UserProvider>,
+      <MemoryRouter>
+        <SignupForm />
+      </MemoryRouter>,
   );
   expect(asFragment()).toMatchSnapshot();
 });

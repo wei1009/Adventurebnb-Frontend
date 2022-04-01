@@ -15,9 +15,9 @@ function Routes({ login, signup }) {
 
   const options = {
     position: positions.TOP_CENTER,
-    timeout: 3000,
+    timeout: 2000,
     offset: '25px',
-    transition: transitions.SCALE
+    transition: transitions.SCALE,
   }
 
   console.debug(
@@ -31,7 +31,9 @@ function Routes({ login, signup }) {
       <Switch>
 
         <Route exact path="/">
-          <Home />
+          <AlertProvider template={AlertTemplate} {...options}>
+            <Home />
+            </AlertProvider>
         </Route>
 
         <Route exact path="/hotel">

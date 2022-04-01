@@ -84,6 +84,7 @@ function Hotels() {
                     />
                 </div>
             </div>
+            {totalCount > 1 &&
             <div className="pagination-area">
                 <Pagination totalCount={totalCount}
                     type={type}
@@ -96,6 +97,7 @@ function Hotels() {
                     children={children}
                 />
             </div>
+            }
             <div className="hotelLists">
                 {hotelData.map(h => (
                     <HotelList

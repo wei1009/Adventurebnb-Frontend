@@ -1,40 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import "../CSS/Pagination.css";
 
 function Pagination({ totalCount, type, city, state, zip, checkInDate, checkOutDate, adult, children }) {
     const history = useHistory();
     const locationSearch = useLocation().search;
-    let CurrentPage =new URLSearchParams(locationSearch).get("page");
+    let queryPage = new URLSearchParams(locationSearch).get("page");
+    let currentPage;
     let page = Math.floor(totalCount / 50) + 1;
     let pageCount = []
+    
     for (let i = 1; i <= page; i++) {
         pageCount.push(i)
     }
 
+
+    currentPage = isNaN(parseInt(queryPage)) ? 1 : parseInt(queryPage)
+
     function handlePaginationClick(e) {
         let p = e.target.innerText;
+
+        if (parseInt(p) === currentPage){
+            return;
+        }
+
         history.push(getPagingURL(p));
         window.location.reload()
     }
 
     function handlePreviousPageClick(e) {
-        let p = CurrentPage - 1;
+        let previousPage = currentPage - 1;
         
-        history.push(getPagingURL(p));
+        history.push(getPagingURL(previousPage));
         window.location.reload()
     }
 
     function handleNextPageClick(e) {
-        let p
-
-        if (CurrentPage == null){
-            p=2;
-        }
-        else{
-            p=CurrentPage + 1;
-        }
-
-        history.push(getPagingURL(p));
+        let nextPage = currentPage + 1;
+        history.push(getPagingURL(nextPage));
         window.location.reload()
     }
 
@@ -54,23 +57,23 @@ function Pagination({ totalCount, type, city, state, zip, checkInDate, checkOutD
     return (
         <nav aria-label="Page navigation example" >
             <ul className="pagination">
-                {(CurrentPage !== null && parseInt(CurrentPage) > 1) && 
+                {(currentPage > 1) && 
                     (<li className="page-item" onClick={handlePreviousPageClick}>
-                        <div className="page-link" aria-label="Previous">
+                        <div className="page-link previous-page" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </div>
                     </li>)
                 }
                 {pageCount.map(p => (
-                    <li className="page-item" onClick={handlePaginationClick}>
-                        <div className="page-link">
+                    <li className={`page-item ${p==currentPage? 'current-page': 'non-current-page'}`} onClick={handlePaginationClick}>
+                        <div className={`page-link ${p==currentPage? 'current-page': 'non-current-page'}`}>
                             {p}
                         </div>
                     </li>
                 ))}
-                {(CurrentPage == null || parseInt(CurrentPage) < pageCount.length) &&
+                {(pageCount.length > 1 || currentPage < pageCount.length) &&
                 <li className="page-item" onClick={handleNextPageClick}>
-                    <div className="page-link" aria-label="Next">
+                    <div className="page-link next-page" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </div>
                 </li>

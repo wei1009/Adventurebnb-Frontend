@@ -37,16 +37,20 @@ exports[`matches snapshot 1`] = `
       <div
         class="grid-border"
       >
-        <span
-          class="facility"
+        <div
+          class="facility-field"
         >
-          test
-        </span>
-        <span
-          class="facility"
-        >
-          test
-        </span>
+          <span
+            class="facility"
+          >
+            test
+          </span>
+          <span
+            class="facility"
+          >
+            test
+          </span>
+        </div>
         <div
           class="hotel-description"
         >

@@ -114,6 +114,7 @@ function ProfileForm() {
               <input
                 name="email"
                 className="form-control"
+                disabled
                 value={formData.email}
                 onChange={handleChange}
               />

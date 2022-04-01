@@ -44,7 +44,7 @@ function NavBar({ logout }) {
     return (
         <div className="NavBar">
             <Navbar collapseOnSelect expand="sm">
-                <Link to="/" className="navbar-brand text-primary logo" >Hotel Searching</Link>
+                <Link to="/" className="navbar-brand text-primary logo" >Adventurebnb</Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="navItem ms-auto">

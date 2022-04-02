@@ -1,7 +1,7 @@
 # Adventurebnb
 
 
-##  [Try live app here!](http://hotel-search-service.surge.sh/) 
+##  [Try live app here!](https://adventurebnb.surge.sh/) 
 
 
 ![hoempage](/images/homepage-img.png "homepage")

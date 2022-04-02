@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "surge": "REACT_APP_BASE_URL=https://hotel-search-service.herokuapp.com npm run build && cp build/index.html build/200.html && surge build hotel-search-service.surge.sh && echo http://hotel-search-service.surge.sh"
+    "surge": "REACT_APP_BASE_URL=https://hotel-search-service.herokuapp.com npm run build && cp build/index.html build/200.html && surge build adventurebnb.surge.sh && echo http://hotel-search-service.surge.sh"
   },
   "eslintConfig": {
     "extends": [

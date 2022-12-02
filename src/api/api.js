@@ -114,4 +114,5 @@ class HotelApi {
 
 }
 
+
 export default HotelApi;
